@@ -1,0 +1,19 @@
+.items { margin-top: 100px; }
+
+.item
+{
+  -moz-box-shadow: 1px 1px 10px 1px #9b9b9b;
+  -webkit-box-shadow: 1px 1px 10px 1px #9b9b9b;
+  -o-box-shadow: 1px 1px 10px 1px #9b9b9b;
+  box-shadow: 1px 1px 10px 1px #9b9b9b;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, Strength=10);
+  width: 45%;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  margin: 10px 0 0 10px;
+  color: black;
+}
+.item .name {}
+.item .price {}
+.item .picture_item { height: 200px; width: 250px; }
