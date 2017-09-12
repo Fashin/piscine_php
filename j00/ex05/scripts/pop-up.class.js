@@ -11,8 +11,14 @@ class PopUp {
     this.pop_up.style.display = "block";
   }
 
+  cleans() {
+    for (let i = 2; i < this.pop_up.children.length; i++)
+      this.pop_up.children[i].remove();
+  }
+
   close_pop_up() {
     document.getElementsByClassName('pop_up')[0].style.display = "none";
+    pop_up.cleans();
   }
 
   add_element(type, content, attribute = undefined, binding = undefined) {
@@ -24,11 +30,6 @@ class PopUp {
     if (typeof binding !== "undefined")
       binding(new_el);
     this.pop_up.appendChild(new_el);
-  }
-
-  cleans() {
-    for (let i = 2; i < this.pop_up.children.length; i++)
-      this.pop_up.children[i].remove();
   }
 }
 

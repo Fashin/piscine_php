@@ -20,7 +20,6 @@ class MapControl {
    */
   put_text_interract(el, num = 0) {
     pop_up.cleans();
-    console.log(el);
     el = (typeof el.srcElement !== "undefined") ? el.srcElement : el[0];
 
     let name = el.getAttribute('class').split(' ')[1];
@@ -52,6 +51,7 @@ class MapControl {
    */
   create_element(class_name)
   {
+    pop_up.cleans(1);
     let div = document.createElement('div');
     div.className = 'invisible ' + class_name;
     div.setAttribute('talk', '0');
