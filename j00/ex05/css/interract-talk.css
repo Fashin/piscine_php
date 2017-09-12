@@ -1,0 +1,46 @@
+.invisible {
+  display: block;
+  position: absolute;
+  
+  cursor: pointer;
+}
+
+.women-1 {
+  height: 18vw; width: 5vw;
+  top: 31vw; left: 20vw;
+}
+
+.men-1 {
+  height: 7vw; width: 2vw;
+  top: 32vw; left: 29vw;
+}
+
+.men-2 {
+  height: 5vw; width: 3vw;
+  top: 31vw; left: 48vw;
+}
+
+.women-2 {
+  height: 3vw; width: 3vw;
+  top: 32vw; left: 38vw;
+}
+
+.women-3 {
+  height: 4vw; width: 3vw;
+  top: 32vw; left: 43vw;
+}
+
+.women-4 {
+  height: 2vw; width: 2vw;
+  top: 33vw; left: 74vw;
+}
+
+.women-5 {
+  height: 2vw; width: 2vw;
+  top: 32vw; left: 57vw;
+}
+
+.group-1 {
+  height: 2vw; width: 5vw;
+  top: 31vw; left: 67vw;
+}

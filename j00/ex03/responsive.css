@@ -1,0 +1,21 @@
+.licorne { float: left; width: 100px; height: 100px; }
+.legende { margin-left: 150px; display: block; }
+.square { height: 40px; width: 150px; display: inline-block; margin: 10px 0 0 10px; text-align: center; }
+table { border-collapse: collapse; width: 80%; text-align: center; margin: 0 0 30px 5%; }
+td { border: 1px solid black; }
+.td-hide { border: 0px solid white; visibility: hidden; }
+.indice, .accronyme, .masse_atomique { display: block;  }
+.indice { font-size: 10px; padding-left: 20px; }
+.accronyme { font-size : 30px; }
+.masse_atomique { float: left; font-size: 10px; }
+.light_green { background-color: #A0FFA0; }
+.dark_green { background-color: #CCCC99; }
+.dark_red { background-color: #FF6666; }
+.light_red { background-color: #FFC0C0; }
+.light_brown { background-color: #F6CFA1; }
+.yellow { background-color: #FFFF99; }
+.light_blue { background-color: #C0E8FF; }
+.light_grey { background-color: #CCCCCC; }
+.pink { background-color : #FFBFFF; }
+.dark_pink { background-color: #FF99CC; }
+.unclass { background-color: #EEEEEE; }

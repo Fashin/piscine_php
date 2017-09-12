@@ -1,0 +1,37 @@
+.pop_up
+{
+  background : rgb(140, 253, 142);
+  position: absolute;
+  height: 40vw; width: 60vw;
+  top: 15vw; left: 20vw;
+  border-radius: 15px;
+  display: none;
+}
+
+.pop_up .close
+{
+  position: relative;
+  top: 2vw; left: 2vw;
+  width: 2vw; height: 2vw;
+  cursor: pointer;
+}
+
+.pop_up p
+{
+  text-align: center;
+  width: 50vw;
+  margin-left: 7vw;
+}
+
+.pop_up .reponse {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  left: 26vw;
+  list-style-type: disc;
+  display: list-item;
+}
+
+.pop_up .reponse:hover {
+  text-decoration: underline;
+}
