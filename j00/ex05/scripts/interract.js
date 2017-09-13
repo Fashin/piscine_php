@@ -14,7 +14,8 @@
    */
   var interract_function = {
     "arrow" : ["click", forward_map],
-    "talk" : ["click", talk_control]
+    "talk" : ["click", talk_control],
+    "use" : ["click", talk_control]
   };
 
   /**

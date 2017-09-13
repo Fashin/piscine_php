@@ -6,7 +6,18 @@ class MapControl {
    */
   constructor(){
     this.div_class = {
-      0 : ['women-1', 'men-1', 'men-2', 'women-2', 'women-3', 'women-4', 'women-5', 'group-1']
+      0 : {
+        0 : ['women-1', 'pnj'],
+        1 : ['men-1', 'pnj'],
+        2 : ['women-2', 'pnj'],
+        3 : ['women-3', 'pnj'],
+        4 : ['women-4', 'pnj'],
+        5 : ['women-5', 'pnj'],
+        6 : ['group-1', 'pnj']
+      },
+      4 : {
+        0 : ['doors-1', 'quest', 'coffee']
+      }
     };
     this.dialogue = [first_picture_text];
   }
@@ -62,18 +73,36 @@ class MapControl {
     pop_up.show(text);
   }
 
+  starting_quest(){
+    let object_name = map_control.div_class[this.getAttribute('object')][this.getAttribute('uid')];
+
+    let img_main = document.getElementsByClassName('img-main')[0];
+    img_main.setAttribute('src', 'ressources/quest_map/' + object_name[2] + '/0.png');
+    img_main.setAttribute('quest', object_name[2]);
+    document.getElementsByClassName('arrow')[0].setAttribute('actual', '0');
+  }
+
   /**
    * Create a div element for insert on the div interract on main picture
    * @param  {String} class_name class_name get from the div_class declare on constructor
    * @return {DOM}            Div with class 'invisible' & <class_name> get on parameter
    */
-  create_element(class_name)
+  create_element(object_name)
   {
     pop_up.cleans();
     let div = document.createElement('div');
-    div.className = 'invisible ' + class_name;
-    div.setAttribute('talk', '0');
-    div.addEventListener('click', this.put_text_interract);
+    div.className = 'invisible ' + object_name[0];
+    if (object_name[1] == 'pnj')
+    {
+      div.setAttribute('talk', '0');
+      div.addEventListener('click', this.put_text_interract);
+    }
+    else if (object_name[1] == 'quest')
+    {
+      div.setAttribute('object', '4');
+      div.setAttribute('uid', '0');
+      div.addEventListener('click', this.starting_quest);
+    }
     return (div);
   }
   /**
@@ -95,7 +124,7 @@ class MapControl {
     let block_interract = document.getElementsByClassName('interract-block')[0];
     this.cleans_div_interract();
     if (typeof this.div_class[img_actual] !== "undefined")
-      for (let i = 0; i < this.div_class[img_actual].length; i++)
+      for (let i = 0; i < Object.keys(this.div_class[img_actual]).length; i++)
         block_interract.appendChild(this.create_element(this.div_class[img_actual][i]));
   }
 }

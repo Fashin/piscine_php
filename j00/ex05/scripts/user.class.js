@@ -8,6 +8,7 @@ class Users extends Quest{
       "add_quest" : this.adding_new_quest,
       "help" : this.man
     };
+    this.object = [];
   }
 
   adding_new_quest (id) {
