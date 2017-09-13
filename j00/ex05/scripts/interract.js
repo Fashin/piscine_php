@@ -5,7 +5,17 @@
    */
   var onglets = document.getElementsByClassName('img-article');
 
-  var map_control = new MapControl();
+  /**
+   * Array to create the binding with parameters:
+   * Key : class needed for binding
+   * array[0] : type of event listener
+   * array[1] : function needed for calling
+   * @type {Object}
+   */
+  var interract_function = {
+    "arrow" : ["click", forward_map],
+    "talk" : ["click", talk_control]
+  };
 
   /**
    * Function to control the red border when mouse enter/leave on {onglet}
@@ -19,36 +29,18 @@
   }
 
   /**
-   * Function to forward function, list advanced 1...7
-   * @param  {DOM} el DOM element
-   * @return {void}
-   */
-  let forward_map = (el) => {
-    let value = parseInt(el.srcElement.getAttribute('actual'));
-    let img = document.getElementsByClassName('img-main')[0];
-    value++;
-    if (value == 8)
-      value = 1;
-    img.setAttribute('src', 'ressources/forward/' + value + '.png')
-    el.srcElement.setAttribute('actual', value);
-  }
-
-  let talk_control = (el) => {
-    map_control.init_div(parseInt(document.getElementsByClassName('arrow')[0].getAttribute('actual')));
-  }
-
-  /**
    * Binding de touts les events on the differents articles
    * @param  {DOM} let onglet (contains all onglet by articles)
    * @return {void}     Only a binding of differents functions
    */
   for (let i = 0; i < onglets.length; i++)
   {
+    let actual_class = onglets[i].classList[1];
+    Object.keys(interract_function).find((name) => {
+      if (name == actual_class)
+        onglets[i].addEventListener(interract_function[name][0], interract_function[name][1]);
+    });
     onglets[i].addEventListener('mouseover', red_border_control);
-    if (onglets[i].classList.contains('arrow'))
-      onglets[i].addEventListener('click', forward_map);
-    else if (onglets[i].classList.contains('talk'))
-      onglets[i].addEventListener('click', talk_control);
   }
 
 })();

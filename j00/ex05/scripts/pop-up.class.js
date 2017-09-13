@@ -7,8 +7,14 @@ class PopUp {
   }
 
   show(text) {
-    this.pop_up.children[1].innerHTML = text;
-    this.pop_up.style.display = "block";
+    if (typeof text === "undefined")
+      this.close_pop_up();
+    else
+    {
+      this.pop_up.children[1].innerHTML = text;
+      this.pop_up.classList.remove("hide");
+      this.pop_up.classList.add("show");
+    }
   }
 
   cleans() {
@@ -17,7 +23,8 @@ class PopUp {
   }
 
   close_pop_up() {
-    document.getElementsByClassName('pop_up')[0].style.display = "none";
+    pop_up.pop_up.classList.remove("show");
+    pop_up.pop_up.classList.add("hide");
     pop_up.cleans();
   }
 
@@ -31,6 +38,5 @@ class PopUp {
       binding(new_el);
     this.pop_up.appendChild(new_el);
   }
-}
 
-var pop_up = new PopUp();
+}
