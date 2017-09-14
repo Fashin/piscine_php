@@ -11,7 +11,7 @@ text.addEventListener("keydown", (event) => {
       {
         input_user.splice(0, 1);
         let ret = undefined;
-        ret = user.commands[name](input_user)
+        ret = user.commands[name][0](input_user)
         if (typeof ret !== "undefined")
           console.log(ret);
         else

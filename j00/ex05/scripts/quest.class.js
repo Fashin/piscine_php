@@ -3,7 +3,7 @@ class Quest {
   constructor () {
 
     this.quest = {
-      "id" : ["0A"]
+      "id" : ["0A", "coffee"]
     };
 
     this.list_quest = {
@@ -21,13 +21,13 @@ class Quest {
       return ("Cette quête n'existe pas :/");
   }
 
-  man() {
-    let ret = undefined;
-
-    ret = "Vous pouvez utiliser les commandes suivantes : \n";
-    ret += "- quest [liste toutes les quêtes actuels]\n";
-    ret += "- help [pour voire toutes les commandes que vous pouvez tapez]\n";
-    return (ret);
+  have_quest(uid) {
+    console.log(this.actual_quest);
+    console.log(uid);
+    for (let i = 0; i < this.actual_quest.length; i++)
+      if (this.actual_quest[i] == uid)
+        return (1);
+    return (0);
   }
 
   toString(quest) {

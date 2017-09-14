@@ -1,7 +1,16 @@
 class MapControl {
 
   /**
-   * Only create an array to contain the class and the text to get by json
+   * create all the hitbox for pnj speaking and quest hit box
+   * (int) <- id of the map who want set up the hitbox
+   *    (int) <- uid contain an array
+   *      (array) <- array contain the properties who can set up on the hitbox
+   *        - (string) class name for the hitbox
+   *        - (string) typeof the hit box (pnj | quest)
+   *        if its a quest you can set up :
+   *          - (string) name of the quest
+   *          - (function) function callback when hitbox click
+   *          - (Object) Object contain the params who want set up on the hitbox
    * @return {void}
    */
   constructor(){
@@ -16,7 +25,15 @@ class MapControl {
         6 : ['group-1', 'pnj']
       },
       4 : {
-        0 : ['doors-1', 'quest', 'coffee']
+        0 : ['doors-1', 'quest', 'coffee', this.starting_quest_coffee, {
+          'object' : 4,
+          'uid' : 0
+        }]
+      },
+      "A2" : {
+        0 : ['coffee-1', 'quest', 'coffee',  user.update_quest, {
+          'object' : 'coffee'
+        }]
       }
     };
     this.dialogue = [first_picture_text];
@@ -27,7 +44,8 @@ class MapControl {
    * Create to get the json from this.dialogue
    * @return {int} number of the actual picture
    */
-  get_actual_picture() {
+  get_actual_picture()
+  {
     let picture = document.getElementsByClassName('img-main')[0];
     let num = picture.getAttribute('src').split('/')[1].split('.')[0];
     if (num == "cluster")
@@ -43,21 +61,21 @@ class MapControl {
    * @param  {Number} [num=0->7] Number to search on the json
    * @return {void}
    */
-  put_text_interract(el, num = 0) {
+  put_text_interract(el, num = 0)
+  {
     pop_up.cleans();
     el = (typeof el.srcElement !== "undefined") ? el.srcElement : el[0];
     let name = el.getAttribute('class').split(' ')[1];
     let json = undefined;
     let text = undefined;
     json = (typeof map_control.get_actual_picture()[name] !== "undefined") ? first_picture_text[name][num] : undefined;
+    let answer = (typeof json !== "undefined") ? map_control.check_answer(json['a']) : undefined;
     if (typeof json !== "undefined")
     {
       if (typeof json["adding_quest"] !== "undefined")
         user.adding_new_quest(json["adding_quest"]["id"]);
       else
       {
-        text = json['q'];
-        let answer = json['a'];
         for (let key in answer)
           pop_up.add_element('a', answer[key][0], {"href" : "#", "class": "reponse", "goto": answer[key][1], "parent" : name}, (new_el) => {
             new_el.addEventListener('click', () => {
@@ -66,20 +84,41 @@ class MapControl {
               map_control.put_text_interract(el, new_el.getAttribute('goto'));
             });
           });
+        text = json['q'];
       }
     }
     else
-      text = "Je n'ai rien à te raconter fuis ! J'ai du travail moi";
+      text = "Je n'ai rien à te raconter fuis ! J'ai du travail moi !";
     pop_up.show(text);
   }
 
-  starting_quest(){
+  check_answer(answer)
+  {
+    let ret = {};
+    if (typeof answer !== "undefined")
+    {
+      for (let key in answer)
+      {
+        if (typeof answer[key][2] !== "undefined")
+        {
+          if (user.have_quest(answer[key][2]) == 1)
+            ret[key] = answer[key];
+        }
+        else
+          ret[key] = answer[key];
+      }
+    }
+    return (ret);
+  }
+
+  starting_quest_coffee()
+  {
     let object_name = map_control.div_class[this.getAttribute('object')][this.getAttribute('uid')];
 
     let img_main = document.getElementsByClassName('img-main')[0];
     img_main.setAttribute('src', 'ressources/quest_map/' + object_name[2] + '/0.png');
     img_main.setAttribute('quest', object_name[2]);
-    document.getElementsByClassName('arrow')[0].setAttribute('actual', '0');
+    document.getElementsByClassName('arrow')[0].setAttribute('actual', 'A0');
   }
 
   /**
@@ -99,9 +138,10 @@ class MapControl {
     }
     else if (object_name[1] == 'quest')
     {
-      div.setAttribute('object', '4');
-      div.setAttribute('uid', '0');
-      div.addEventListener('click', this.starting_quest);
+      if (typeof object_name[4] !== "undefined")
+        for (let key in object_name[4])
+          div.setAttribute(key, object_name[4][key]);
+      div.addEventListener('click', object_name[3]);
     }
     return (div);
   }

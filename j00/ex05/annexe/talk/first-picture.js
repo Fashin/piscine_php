@@ -5,6 +5,7 @@ var first_picture_text = {
           "a" : {
             "0" : ["Bien et vous ?", '1'],
             "1" : ["Test", 'A'],
+            "3" : ["Tu as ce que je t'ai demandé ?", "E", "0A"]
           },
         },
         "1" : {
@@ -37,7 +38,7 @@ var first_picture_text = {
             "0" : ["Ok c'est partie...", "C"],
             "1" : ["Nan c'est mort", "99"]
           }
-        }
+        },
     },
     "men-1" : {
       "0" : {
