@@ -39,6 +39,12 @@ var first_picture_text = {
             "1" : ["Nan c'est mort", "99"]
           }
         },
+        "E" : {
+          "quest" : "Salut a tous",
+          "uid" : "0A",
+          "reload" : "Tu n'as pas de café, dépéche toi on a du travail !",
+          "end" : "Ah merci, j'avais soif",
+        }
     },
     "men-1" : {
       "0" : {

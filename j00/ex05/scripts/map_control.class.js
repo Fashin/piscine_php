@@ -70,10 +70,20 @@ class MapControl {
     let text = undefined;
     json = (typeof map_control.get_actual_picture()[name] !== "undefined") ? first_picture_text[name][num] : undefined;
     let answer = (typeof json !== "undefined") ? map_control.check_answer(json['a']) : undefined;
-    if (typeof json !== "undefined")
+    if (typeof json !== "undefined" && typeof json)
     {
       if (typeof json["adding_quest"] !== "undefined")
-        user.adding_new_quest(json["adding_quest"]["id"]);
+        user.add_new_quest(json["adding_quest"]["id"]);
+      else if (typeof json['quest'] !== "undefined")
+      {
+        if (user.have_object(user.pre_requis(json['uid'], document.getElementsByClassName('arrow')[0].getAttribute('actual'))))
+        {
+          user.end_quest(json['uid']);
+          text = json['end'];
+        }
+        else
+          text = json['reload'];
+      }
       else
       {
         for (let key in answer)

@@ -23,7 +23,7 @@ header .close
   float: right;
   height: 20px; width: 20px;
   position: relative;
-  top: 65px; right: -10px;
+  top: 8vw; right: -10px;
 }
 #article
 {
@@ -38,7 +38,7 @@ header .close
 .article-left
 {
   float: left;
-  margin: 1.2vw 0 0 7vw;
+  margin:0.5vw 0 0 7vw;
   padding: 20px 0 20px 0;
 }
 

@@ -3,6 +3,6 @@ var first_picture_quest = {
     "uid" : "0A",
     "title" : "Larbin",
     "contexte" : "Va me chercher du café à la Cantina !",
-    "pre_requis" : "coffee"
+    "pre_requis" : "coffee",
   }
 };

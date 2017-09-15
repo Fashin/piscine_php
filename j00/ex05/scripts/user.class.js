@@ -5,9 +5,10 @@ class Users extends Quest{
     this.actual_quest = [];
     this.commands = {
       "quest" : [this.get_quest, '1', '[liste toutes les quêtes actuels]'],
-      "add_quest" : [this.adding_new_quest, '0'],
       "help" : [this.man, '1', '[pour voire toutes les commandes que vous pouvez tapez]'],
-      "inventaire" : [this.get_object, '1', '[pour voire les objets de votre inventaire]']
+      "inventaire" : [this.get_object, '1', '[pour voire les objets de votre inventaire]'],
+      "add_quest" : [this.add_new_quest, '0'],
+      "add_object" : [this.add_new_object, '0']
     };
     this.object = [];
   }
@@ -23,8 +24,15 @@ class Users extends Quest{
     return (ret);
   }
 
-  adding_new_quest (id) {
-    user.actual_quest.push(id);
+  add_new_quest (id) {
+    for (let i = 0; i < id.length; i++)
+      user.actual_quest.push(id[i]);
+    console.log("Quête accepter");
+  }
+
+  add_new_object (name) {
+    for (let i = 0; i < name.length; i++)
+      user.object.push(name[i]);
   }
 
   get_object() {
@@ -51,9 +59,25 @@ class Users extends Quest{
 
   get_quest() {
     if (user.actual_quest.length > 0)
-      return (user.translate_quest(user.actual_quest));
+    {
+      console.log(user.actual_quest);
+      //console.log(user.translate_quest());
+      return ("nthin");
+    }
     else
       return ("Vous n'avez pas encore choisit de quête");
+  }
+
+  end_quest (uid) {
+    for (let i = 0; i < user.actual_quest.length; i++)
+    {
+      if (user.actual_quest[i] == uid)
+      {
+        user.actual_quest.splice(i, 1);
+        console.log("Bravo vous avez terminé la quête !");
+        break ;
+      }
+    }
   }
 
   update_quest() {
