@@ -1,0 +1,12 @@
+#!/bin/bash
+read -p "Path : " path
+read -p "File name : " file
+while [ -d $path ];
+	do 
+		read -p "Folder already exists enter a new path : " path
+done
+mkdir $path;
+file="$path/$file.php";
+echo "#\!/usr/bin/php"  > $file;
+chmod 700 $file;
+
