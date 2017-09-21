@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mendeleiv</title>
+    <link rel="stylesheet" href="responsive.css">
+  </head>
+  <body>
+    <img class="licorne" src="https://s-media-cache-ak0.pinimg.com/736x/29/b3/64/29b36478d0701ed8b22295adce80c9a6.jpg">
+    <div class="legende">
+      <p><u>Légende : </u></p>
+      <span class="square dark_red">Alcalins</span>
+      <span class="square light_brown">Alcalino-terreux</span>
+      <span class="square pink">Lanthanides</span>
+      <span class="square dark_pink">Actinides</span>
+      <span class="square light_red">Métaux de transition</span><br>
+      <span class="square light_grey">Métaux pauvres</span>
+      <span class="square dark_green">Métalloïdes</span>
+      <span class="square light_green">Autres non-métaux</span>
+      <span class="square yellow">Halogènes</span>
+      <span class="square light_blue">Gaz Nobles</span><br>
+      <span class="square unclass">Élèments non-classés</span>
+    </div>
+    <table contenteditable="true">
+      <tr>
+        <td class="light_green">
+          <span class="indice">1.00794</span>
+          <span class="accronyme">H</span>
+          <span class="masse_atomique">1</span>
+        </td>
+        <td class="td-hide" colspan="16"></td>
+        <td class="light_blue">
+          <span class="indice">4.002602</span>
+          <span class="accronyme">He</span>
+          <span class="masse_atomique">2</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">6.941</span>
+          <span class="accronyme">Li</span>
+          <span class="masse_atomique">3</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">9.012182</span>
+          <span class="accronyme">Be</span>
+          <span class="masse_atomique">4</span>
+        </td>
+        <td class="td-hide" colspan="10"></td>
+        <td class="dark_green">
+          <span class="indice">10.811</span>
+          <span class="accronyme">B</span>
+          <span class="masse_atomique">5</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">12.0107</span>
+          <span class="accronyme">C</span>
+          <span class="masse_atomique">6</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">14.0067</span>
+          <span class="accronyme">N</span>
+          <span class="masse_atomique">7</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">15.9994</span>
+          <span class="accronyme">O</span>
+          <span class="masse_atomique">8</span>
+        </td>
+        <td class="yellow">
+          <span class="indice">18.998403</span>
+          <span class="accronyme">F</span>
+          <span class="masse_atomique">9</span>
+        </td>
+        <td class="light_blue">
+          <span class="indice">20.1797</span>
+          <span class="accronyme">Ne</span>
+          <span class="masse_atomique">10</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">22.98976</span>
+          <span class="accronyme">Na</span>
+          <span class="masse_atomique">11</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">24.3050</span>
+          <span class="accronyme">Mg</span>
+          <span class="masse_atomique">12</span>
+        </td>
+        <td class="td-hide" colspan="10"></td>
+        <td class="light_grey">
+          <span class="indice">26.98153</span>
+          <span class="accronyme">Al</span>
+          <span class="masse_atomique">13</span>
+        </td>
+        <td class="dark_green">
+          <span class="indice">28.0855</span>
+          <span class="accronyme">Si</span>
+          <span class="masse_atomique">14</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">30.97696</span>
+          <span class="accronyme">P</span>
+          <span class="masse_atomique">15</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">32.065</span>
+          <span class="accronyme">S</span>
+          <span class="masse_atomique">16</span>
+        </td>
+        <td class="yellow">
+          <span class="indice">35.453</span>
+          <span class="accronyme">Cl</span>
+          <span class="masse_atomique">17</span>
+        </td>
+        <td class="light_blue">
+          <span class="indice">39.948</span>
+          <span class="accronyme">Ar</span>
+          <span class="masse_atomique">18</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">39.0983</span>
+          <span class="accronyme">K</span>
+          <span class="masse_atomique">19</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">40.078</span>
+          <span class="accronyme">Ca</span>
+          <span class="masse_atomique">20</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">44.95591</span>
+          <span class="accronyme">Sc</span>
+          <span class="masse_atomique">21</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">47.867</span>
+          <span class="accronyme">Ti</span>
+          <span class="masse_atomique">22</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">50.9415</span>
+          <span class="accronyme">V</span>
+          <span class="masse_atomique">23</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">51.9962</span>
+          <span class="accronyme">Cr</span>
+          <span class="masse_atomique">24</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">54.93804</span>
+          <span class="accronyme">Mn</span>
+          <span class="masse_atomique">25</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">55.845</span>
+          <span class="accronyme">Fe</span>
+          <span class="masse_atomique">26</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">58.93319</span>
+          <span class="accronyme">Co</span>
+          <span class="masse_atomique">27</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">58.6934</span>
+          <span class="accronyme">Ni</span>
+          <span class="masse_atomique">28</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">63.546</span>
+          <span class="accronyme">Cu</span>
+          <span class="masse_atomique">29</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">65.38</span>
+          <span class="accronyme">Zn</span>
+          <span class="masse_atomique">30</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">69.723</span>
+          <span class="accronyme">Ga</span>
+          <span class="masse_atomique">31</span>
+        </td>
+        <td class="dark_green">
+          <span class="indice">72.64</span>
+          <span class="accronyme">Ge</span>
+          <span class="masse_atomique">32</span>
+        </td>
+        <td class="dark_green">
+          <span class="indice">74.92160</span>
+          <span class="accronyme">As</span>
+          <span class="masse_atomique">33</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">78.96</span>
+          <span class="accronyme">Se</span>
+          <span class="masse_atomique">34</span>
+        </td>
+        <td class="yellow">
+          <span class="indice">79.904</span>
+          <span class="accronyme">Br</span>
+          <span class="masse_atomique">35</span>
+        </td>
+        <td class="light_blue">
+          <span class="indice">83.798</span>
+          <span class="accronyme">Kr</span>
+          <span class="masse_atomique">36</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">85.4678</span>
+          <span class="accronyme">Rb</span>
+          <span class="masse_atomique">37</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">87.62</span>
+          <span class="accronyme">Sr</span>
+          <span class="masse_atomique">38</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">88.90585</span>
+          <span class="accronyme">Y</span>
+          <span class="masse_atomique">39</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">91.224</span>
+          <span class="accronyme">Zr</span>
+          <span class="masse_atomique">40</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">92.90638</span>
+          <span class="accronyme">Nb</span>
+          <span class="masse_atomique">41</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">95.96</span>
+          <span class="accronyme">Mo</span>
+          <span class="masse_atomique">42</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">98</span>
+          <span class="accronyme">Tc</span>
+          <span class="masse_atomique">43</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">101.07</span>
+          <span class="accronyme">Ru</span>
+          <span class="masse_atomique">44</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">102.9055</span>
+          <span class="accronyme">Rh</span>
+          <span class="masse_atomique">45</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">106.42</span>
+          <span class="accronyme">Pd</span>
+          <span class="masse_atomique">46</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">107.8682</span>
+          <span class="accronyme">Ag</span>
+          <span class="masse_atomique">47</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">112.441</span>
+          <span class="accronyme">Cd</span>
+          <span class="masse_atomique">48</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">114.818</span>
+          <span class="accronyme">In</span>
+          <span class="masse_atomique">49</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">118.710</span>
+          <span class="accronyme">Sn</span>
+          <span class="masse_atomique">50</span>
+        </td>
+        <td class="dark_green">
+          <span class="indice">121.760</span>
+          <span class="accronyme">Sb</span>
+          <span class="masse_atomique">51</span>
+        </td>
+        <td class="dark_green">
+          <span class="indice">127.60</span>
+          <span class="accronyme">Te</span>
+          <span class="masse_atomique">52</span>
+        </td>
+        <td class="yellow">
+          <span class="indice">126.9044</span>
+          <span class="accronyme">I</span>
+          <span class="masse_atomique">53</span>
+        </td>
+        <td class="light_blue">
+          <span class="indice">131.293</span>
+          <span class="accronyme">Xe</span>
+          <span class="masse_atomique">54</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">132.9054</span>
+          <span class="accronyme">Cs</span>
+          <span class="masse_atomique">55</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">137.327</span>
+          <span class="accronyme">Ba</span>
+          <span class="masse_atomique">56</span>
+        </td>
+        <td class="pink">
+          <span class="indice"></span>
+          <span class="accronyme"></span>
+          <span class="masse_atomique"></span>
+        </td>
+        <td class="light_red">
+          <span class="indice">178.49</span>
+          <span class="accronyme">Hf</span>
+          <span class="masse_atomique">72</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">180.9478</span>
+          <span class="accronyme">Ta</span>
+          <span class="masse_atomique">73</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">183.84</span>
+          <span class="accronyme">W</span>
+          <span class="masse_atomique">74</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">186.207</span>
+          <span class="accronyme">Re</span>
+          <span class="masse_atomique">75</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">190.23</span>
+          <span class="accronyme">Os</span>
+          <span class="masse_atomique">76</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">192.217</span>
+          <span class="accronyme">Ir</span>
+          <span class="masse_atomique">77</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">192.084</span>
+          <span class="accronyme">Pt</span>
+          <span class="masse_atomique">78</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">196.9665</span>
+          <span class="accronyme">Au</span>
+          <span class="masse_atomique">79</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">200.59</span>
+          <span class="accronyme">Hg</span>
+          <span class="masse_atomique">80</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">204.3833</span>
+          <span class="accronyme">Tl</span>
+          <span class="masse_atomique">81</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">202.2</span>
+          <span class="accronyme">Pb</span>
+          <span class="masse_atomique">82</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">208.9804</span>
+          <span class="accronyme">Bi</span>
+          <span class="masse_atomique">83</span>
+        </td>
+        <td class="light_grey">
+          <span class="indice">210</span>
+          <span class="accronyme">Po</span>
+          <span class="masse_atomique">84</span>
+        </td>
+        <td class="light_green">
+          <span class="indice">210</span>
+          <span class="accronyme">At</span>
+          <span class="masse_atomique">85</span>
+        </td>
+        <td class="light_blue">
+          <span class="indice">220</span>
+          <span class="accronyme">Rn</span>
+          <span class="masse_atomique">86</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_red">
+          <span class="indice">223</span>
+          <span class="accronyme">Fr</span>
+          <span class="masse_atomique">87</span>
+        </td>
+        <td class="light_brown">
+          <span class="indice">226</span>
+          <span class="accronyme">Ra</span>
+          <span class="masse_atomique">88</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice"></span>
+          <span class="accronyme"></span>
+          <span class="masse_atomique"></span>
+        </td>
+        <td class="light_red">
+          <span class="indice">261</span>
+          <span class="accronyme">Rf</span>
+          <span class="masse_atomique">104</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">262</span>
+          <span class="accronyme">Db</span>
+          <span class="masse_atomique">105</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">266</span>
+          <span class="accronyme">Sg</span>
+          <span class="masse_atomique">106</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">264</span>
+          <span class="accronyme">Bh</span>
+          <span class="masse_atomique">107</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">277</span>
+          <span class="accronyme">Hs</span>
+          <span class="masse_atomique">108</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">268</span>
+          <span class="accronyme">Mt</span>
+          <span class="masse_atomique">109</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">271</span>
+          <span class="accronyme">Ds</span>
+          <span class="masse_atomique">110</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">272</span>
+          <span class="accronyme">Rg</span>
+          <span class="masse_atomique">111</span>
+        </td>
+        <td class="light_red">
+          <span class="indice">285</span>
+          <span class="accronyme">Cn</span>
+          <span class="masse_atomique">112</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">284</span>
+          <span class="accronyme">Uut</span>
+          <span class="masse_atomique">113</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">289</span>
+          <span class="accronyme">Fl</span>
+          <span class="masse_atomique">114</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">288</span>
+          <span class="accronyme">Uup</span>
+          <span class="masse_atomique">115</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">292</span>
+          <span class="accronyme">Lv</span>
+          <span class="masse_atomique">116</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">292</span>
+          <span class="accronyme">Uus</span>
+          <span class="masse_atomique">117</span>
+        </td>
+        <td class="unclass">
+          <span class="indice">294</span>
+          <span class="accronyme">Uuo</span>
+          <span class="masse_atomique">118</span>
+        </td>
+      </tr>
+    </table>
+    <table contenteditable="true">
+      <tr>
+        <td class="pink">
+          <span class="indice">138.91</span>
+          <span class="accronyme">La</span>
+          <span class="masse_atomique">57</span>
+        </td>
+        <td class="pink">
+          <span class="indice">140.12</span>
+          <span class="accronyme">Ce</span>
+          <span class="masse_atomique">58</span>
+        </td>
+        <td class="pink">
+          <span class="indice">140.91</span>
+          <span class="accronyme">Pr</span>
+          <span class="masse_atomique">59</span>
+        </td>
+        <td class="pink">
+          <span class="indice">144.24</span>
+          <span class="accronyme">Nd</span>
+          <span class="masse_atomique">60</span>
+        </td>
+        <td class="pink">
+          <span class="indice">145</span>
+          <span class="accronyme">Pm</span>
+          <span class="masse_atomique">61</span>
+        </td>
+        <td class="pink">
+          <span class="indice">150.36</span>
+          <span class="accronyme">Sm</span>
+          <span class="masse_atomique">62</span>
+        </td>
+        <td class="pink">
+          <span class="indice">151.96</span>
+          <span class="accronyme">Eu</span>
+          <span class="masse_atomique">63</span>
+        </td>
+        <td class="pink">
+          <span class="indice">157.25</span>
+          <span class="accronyme">Gd</span>
+          <span class="masse_atomique">64</span>
+        </td>
+        <td class="pink">
+          <span class="indice">158.93</span>
+          <span class="accronyme">Tb</span>
+          <span class="masse_atomique">65</span>
+        </td>
+        <td class="pink">
+          <span class="indice">162.50</span>
+          <span class="accronyme">Dy</span>
+          <span class="masse_atomique">66</span>
+        </td>
+        <td class="pink">
+          <span class="indice">164.93</span>
+          <span class="accronyme">Ho</span>
+          <span class="masse_atomique">67</span>
+        </td>
+        <td class="pink">
+          <span class="indice">167.26</span>
+          <span class="accronyme">Er</span>
+          <span class="masse_atomique">68</span>
+        </td>
+        <td class="pink">
+          <span class="indice">168.93</span>
+          <span class="accronyme">Tm</span>
+          <span class="masse_atomique">69</span>
+        </td>
+        <td class="pink">
+          <span class="indice">173.05</span>
+          <span class="accronyme">Yb</span>
+          <span class="masse_atomique">70</span>
+        </td>
+        <td class="pink">
+          <span class="indice">174.97</span>
+          <span class="accronyme">Lu</span>
+          <span class="masse_atomique">71</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="dark_pink">
+          <span class="indice">227</span>
+          <span class="accronyme">Ac</span>
+          <span class="masse_atomique">89</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">232.04</span>
+          <span class="accronyme">Th</span>
+          <span class="masse_atomique">90</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">231.04</span>
+          <span class="accronyme">Pa</span>
+          <span class="masse_atomique">91</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">238.03</span>
+          <span class="accronyme">U</span>
+          <span class="masse_atomique">92</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">237</span>
+          <span class="accronyme">Np</span>
+          <span class="masse_atomique">93</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">244</span>
+          <span class="accronyme">Pu</span>
+          <span class="masse_atomique">94</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">243</span>
+          <span class="accronyme">Am</span>
+          <span class="masse_atomique">95</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">247</span>
+          <span class="accronyme">Cm</span>
+          <span class="masse_atomique">96</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">247</span>
+          <span class="accronyme">Bk</span>
+          <span class="masse_atomique">97</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">251</span>
+          <span class="accronyme">Cf</span>
+          <span class="masse_atomique">98</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">252</span>
+          <span class="accronyme">Es</span>
+          <span class="masse_atomique">99</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">257</span>
+          <span class="accronyme">Fm</span>
+          <span class="masse_atomique">100</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">258</span>
+          <span class="accronyme">Md</span>
+          <span class="masse_atomique">101</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">259</span>
+          <span class="accronyme">No</span>
+          <span class="masse_atomique">102</span>
+        </td>
+        <td class="dark_pink">
+          <span class="indice">262</span>
+          <span class="accronyme">Lr</span>
+          <span class="masse_atomique">103</span>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

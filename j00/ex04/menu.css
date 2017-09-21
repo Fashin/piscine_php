@@ -1,0 +1,28 @@
+.menu
+{
+  position: absolute; top: 1vw;
+
+}
+.menu li
+{
+  display: inline-block;
+  margin-left: 80px;
+  border: 1px solid rgb(47, 207, 251);
+  padding: 10px 50px 10px 50px;
+  text-align: center;
+}
+.menu li:hover { cursor: pointer; }
+.menu .sub-menu
+{
+  display: none;
+
+  position: absolute; top: 40px;
+  margin: 0; padding: 0;
+  width: 280px;
+}
+.menu .sub-menu li { display: block; }
+.menu li:hover .sub-menu { display: block; }
+.menu .sm-1 { left: 0px; }
+.menu .sm-2 { left: 210px; }
+.menu .sm-3 { left: 440px; }
+.menu .sm-4 { left: 665px; }

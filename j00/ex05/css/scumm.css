@@ -1,0 +1,81 @@
+body { background-color: rgb(80, 80, 80); margin: 0; padding: 0; overflow: hidden; }
+header
+{
+  display: block;
+  background-color: rgb(144,144,144);
+  height : 10vw; width: 90vw;
+  border-radius: 15px;
+  box-shadow: 12px 13px 12px -4px rgba(0,0,0,1);
+  margin: 1vw 0 2vw 5vw;
+}
+header img { display: inline-block; cursor: pointer; }
+header .logo { float: left; width: 33vw; margin-left : 15px; }
+header .loupe { float: right; height: 10vw; margin-top: 2vw; }
+header .reload
+{
+  float: right;
+  position: relative;
+  top : 10px; right: 10px;
+  height: 20px; width: 20px;
+}
+header .close
+{
+  float: right;
+  height: 20px; width: 20px;
+  position: relative;
+  top: 8vw; right: -10px;
+}
+#article
+{
+  display: inline-block;
+  background-color: rgb(144,144,144);
+  box-shadow: 12px 13px 12px -4px rgba(0,0,0,1);
+  border-radius: 15px;
+}
+
+.article-left, .article-right { width: 10vw; text-align: center; cursor: pointer; }
+
+.article-left
+{
+  float: left;
+  margin:0.5vw 0 0 7vw;
+  padding: 20px 0 20px 0;
+}
+
+.main { width: 62vw; margin-left: 20px; padding: 5px 0 0 10px; }
+
+.article-right
+{
+  float : right;
+  margin: 0 6.5vw 0 0;
+  padding: 2vw 0 15vw 0;
+}
+
+.img-article { width: 6vw; height: 6vw; }
+
+.selected { border: 4px solid red; border-radius: 10px; }
+
+.img-main { height: 44vw; width: 61vw; }
+
+.bricks
+{
+  height: 5vw; width: 8vw;
+  margin-left: 1vw;
+  background-image: url("../ressources/brick.jpg");
+}
+
+.answer
+{
+  background : rgb(140, 253, 142);
+  position: absolute;
+  bottom: 2vw; left: 6vw;
+  height: 10vw; width: 35vw;
+  border-radius: 15px;
+  font-size: 15px;
+  padding: 0 2vw 0 2vw;
+  box-shadow: 12px 13px 12px -4px rgba(0,0,0,1);
+}
+
+.super_text {text-shadow: 5px 4px 1px rgba(191, 137, 89, 0.69);}
+
+input[type="text"] { width: 28vw; }

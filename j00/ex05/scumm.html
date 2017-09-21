@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="./css/scumm.css">
+  <link rel="stylesheet" href="./css/interract-talk.css">
+  <link rel="stylesheet" href="./css/interract-use.css">
+  <link rel="stylesheet" href="./css/pop_up.css">
+  <body>
+    <header>
+      <img src="ressources/day_of_the_42.png" class="logo" title="alors evidemment bonjour a tous"/>
+      <img src="ressources/reload.png" class="reload" title="Recommercer au début">
+      <img src="ressources/close.gif" class="close" title="Déconecter">
+      <img src="ressources/loupe.png" class="loupe" title="salut a tous c'est squeezie"/>
+    </header>
+    <div id="article" class="article-left">
+      <img class="img-article arrow" actual="0" src="ressources/arrow.png" title="Avancer" alt="Avancer">
+      <img class="img-article" src="ressources/main.png" title="Prendre" alt="Prendre">
+      <img class="img-article selected" src="ressources/oeil.png" title="Regarder" alt="Regarder">
+      <img class="img-article use" src="ressources/outil.png" title="Utiliser" alt="Utiliser">
+      <img class="img-article talk" src="ressources/chat-icon.png" title="Parler" alt="Parler">
+    </div>
+    <div id="article" class="main">
+      <img class="img-main" src="ressources/cluster.jpg" title="super cluster vieux">
+      <div class="interract-block"></div>
+    </div>
+    <div id="article" class="article-right ">
+      <img class="img-article" src="ressources/book.png" title="mais ou ils ont eu l'idée ?">
+      <img class="img-article" src="ressources/towel.png" title="aucunes idée">
+      <div class="bricks" title="surement un vieux photoshop"></div>
+    </div>
+    <div class="answer">
+      Vous <h2 style="display:inline">entrez</h2> alors dans une grande piece remplie <br>
+      d'<span class="super_text">ordinateur</span><br>
+      <i>- Bonjour, vous êtes nouveau ici ?</i><br>
+      <input class="text_input" type="text">
+      <input class="send_input" type="submit" value="Repondre">
+    </div>
+    <div class="pop_up hide">
+      <img src="ressources/close.gif" class="close">
+      <p></p>
+    </div>
+  </body>
+  <script src="annexe/quest/0.js" charset="utf-8"></script>
+  <script src="annexe/talk/first-picture.js" charset="utf-8"></script>
+  <script src="scripts/quest.class.js" charset="utf-8"></script>
+  <script src="scripts/user.class.js" charset="utf-8"></script>
+  <script src="scripts/pop-up.class.js" charset="utf-8"></script>
+  <script src="scripts/map_control.class.js" charset="utf-8"></script>
+  <script src="scripts/binding-function.js" charset="utf-8"></script>
+  <script src="scripts/interract.js" charset="utf-8"></script>
+  <script src="scripts/input_control.js" charset="utf-8"></script>
+</html>
