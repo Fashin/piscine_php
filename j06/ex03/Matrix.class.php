@@ -10,7 +10,7 @@ class Matrix
   const RY = array('ry', matrice_rotation, array('angle'));
   const RZ = array('rz', matrice_rotation, array('angle'));
 
-  private $matrice = array(
+  private $_matrice = array(
     0 => array('M', 'vtcX', 'vtcY', 'vtcZ', 'vtx0'),
     1 => array('x', 1.0, 0.0, 0.0, 0.0),
     2 => array('y', 0.0, 1.0, 0.0, 0.0),
@@ -38,18 +38,18 @@ class Matrix
   private function matrice_translation($params)
   {
     $vtx = $params['vtc'];
-    $this->matrice[1][4] = $vtx->_get('_x');
-    $this->matrice[2][4] = $vtx->_get('_y');
-    $this->matrice[3][4] = $vtx->_get('_z');
+    $this->_matrice[1][4] = $vtx->_get('_x');
+    $this->_matrice[2][4] = $vtx->_get('_y');
+    $this->_matrice[3][4] = $vtx->_get('_z');
   }
 
   private function matrice_scale($params)
   {
     $scale = floatval($params['scale']);
-    $this->matrice[1][1] = $this->matrice[1][1] * $scale;
-    $this->matrice[2][2] = $this->matrice[2][2] * $scale;
-    $this->matrice[3][3] = $this->matrice[3][3] * $scale;
-    $this->matrice[4][4] = $this->matrice[4][4] * $scale;
+    $this->_matrice[1][1] = $this->_matrice[1][1] * $scale;
+    $this->_matrice[2][2] = $this->_matrice[2][2] * $scale;
+    $this->_matrice[3][3] = $this->_matrice[3][3] * $scale;
+    $this->_matrice[4][4] = $this->_matrice[4][4] * $scale;
   }
 
   private function matrice_rotation($params)
@@ -58,24 +58,24 @@ class Matrix
     $rot = $params['preset'][0];
     if ($rot == 'rx')
     {
-      $this->matrice[2][2] = cos($angle);
-      $this->matrice[2][3] = (sin($angle) * (-1));
-      $this->matrice[3][2] = sin($angle);
-      $this->matrice[3][3] = cos($angle);
+      $this->_matrice[2][2] = cos($angle);
+      $this->_matrice[2][3] = (sin($angle) * (-1));
+      $this->_matrice[3][2] = sin($angle);
+      $this->_matrice[3][3] = cos($angle);
     }
     else if ($rot == 'ry')
     {
-      $this->matrice[1][1] = cos($angle);
-      $this->matrice[1][3] = sin($angle);
-      $this->matrice[3][1] = (sin($angle) * (-1));
-      $this->matrice[3][3] = cos($angle);
+      $this->_matrice[1][1] = cos($angle);
+      $this->_matrice[1][3] = sin($angle);
+      $this->_matrice[3][1] = (sin($angle) * (-1));
+      $this->_matrice[3][3] = cos($angle);
     }
     else
     {
-      $this->matrice[1][1] = cos($angle);
-      $this->matrice[1][2] = (sin($angle) * (-1));
-      $this->matrice[2][1] = sin($angle);
-      $this->matrice[2][2] = cos($angle);
+      $this->_matrice[1][1] = cos($angle);
+      $this->_matrice[1][2] = (sin($angle) * (-1));
+      $this->_matrice[2][1] = sin($angle);
+      $this->_matrice[2][2] = cos($angle);
     }
   }
 
@@ -87,25 +87,25 @@ class Matrix
     $far = floatval($params['far']);
     $scale = tan(deg2rad($fov * 0.5)) * $near;
 
-    $this->matrice[1][1] = (2 * $near) / (($ratio * $scale) - (($ratio * $scale) * (-1)));
-    $this->matrice[1][2] = 0;
-    $this->matrice[1][3] = (($ratio * $scale) + (($ratio * $scale) * (-1))) / (($ratio * $scale) - (($ratio * $scale) * (-1)));
-    $this->matrice[1][4] = 0;
+    $this->_matrice[1][1] = (2 * $near) / (($ratio * $scale) - (($ratio * $scale) * (-1)));
+    $this->_matrice[1][2] = 0;
+    $this->_matrice[1][3] = (($ratio * $scale) + (($ratio * $scale) * (-1))) / (($ratio * $scale) - (($ratio * $scale) * (-1)));
+    $this->_matrice[1][4] = 0;
 
-    $this->matrice[2][1] = 0;
-    $this->matrice[2][2] = (2 * $near) / ($scale - ($scale * (-1)));
-    $this->matrice[2][3] = ($scale + ($scale * (-1))) / ($scale - ($scale * (-1)));
-    $this->matrice[2][4] = 0;
+    $this->_matrice[2][1] = 0;
+    $this->_matrice[2][2] = (2 * $near) / ($scale - ($scale * (-1)));
+    $this->_matrice[2][3] = ($scale + ($scale * (-1))) / ($scale - ($scale * (-1)));
+    $this->_matrice[2][4] = 0;
 
-    $this->matrice[3][1] = 0;
-    $this->matrice[3][2] = 0;
-    $this->matrice[3][3] = -(($far + $near) / ($far - $near));
-    $this->matrice[3][4] = -((2 * $far * $near) / ($far - $near));
+    $this->_matrice[3][1] = 0;
+    $this->_matrice[3][2] = 0;
+    $this->_matrice[3][3] = -(($far + $near) / ($far - $near));
+    $this->_matrice[3][4] = -((2 * $far * $near) / ($far - $near));
 
-    $this->matrice[4][1] = 0;
-    $this->matrice[4][2] = 0;
-    $this->matrice[4][3] = -1;
-    $this->matrice[4][5] = 0;
+    $this->_matrice[4][1] = 0;
+    $this->_matrice[4][2] = 0;
+    $this->_matrice[4][3] = -1;
+    $this->_matrice[4][5] = 0;
   }
 
   public function mult($rhs)
@@ -118,11 +118,11 @@ class Matrix
     {
       for ($j = 1; $j < 5; $j++)
       {
-        $un = floatval($this->matrice[$i][1] * $rhs->matrice[1][$j]);
-        $deux = floatval($this->matrice[$i][2] * $rhs->matrice[2][$j]);
-        $trois = floatval($this->matrice[$i][3] * $rhs->matrice[3][$j]);
-        $quatre = floatval($this->matrice[$i][4] * $rhs->matrice[4][$j]);
-        $m1->matrice[$i][$j] = floatval($un + $deux + $trois + $quatre);
+        $un = floatval($this->_matrice[$i][1] * $rhs->_matrice[1][$j]);
+        $deux = floatval($this->_matrice[$i][2] * $rhs->_matrice[2][$j]);
+        $trois = floatval($this->_matrice[$i][3] * $rhs->_matrice[3][$j]);
+        $quatre = floatval($this->_matrice[$i][4] * $rhs->_matrice[4][$j]);
+        $m1->_matrice[$i][$j] = floatval($un + $deux + $trois + $quatre);
       }
     }
     return ($m1);
@@ -134,8 +134,8 @@ class Matrix
     {
       $count = 0;
       for ($j = 1; $j < 5; $j++)
-        $count = $count + $this->matrice[$i][$j];
-      $ret[] = $vtx->_get("_" . $this->matrice[$i][0]) + $count;
+        $count = $count + $this->_matrice[$i][$j];
+      $ret[] = $vtx->_get("_" . $this->_matrice[$i][0]) + $count;
     }
     return (new Vector(array('dest' => new Vertex(array(
       'x' => $ret[0],
@@ -150,7 +150,7 @@ class Matrix
     $mx1 = new Matrix(array('preset' => Matrix::IDENTITY));
     for ($i = 1; $i < 5; $i++)
       for ($j = 1; $j < 5; $j++)
-        $mx1->matrice[$i][$j] = $this->matrice[$j][$i];
+        $mx1->_matrice[$i][$j] = $this->_matrice[$j][$i];
     return ($mx1);
   }
 
@@ -162,9 +162,9 @@ class Matrix
       for ($j = 0; $j < 5; $j++)
       {
         if ($j > 0 && $i > 0)
-          $ret = $ret . sprintf(" %.2f", $this->matrice[$i][$j]);
+          $ret = $ret . sprintf(" %.2f", $this->_matrice[$i][$j]);
         else
-          $ret = $ret . sprintf(" %s |", $this->matrice[$i][$j]);
+          $ret = $ret . sprintf(" %s |", $this->_matrice[$i][$j]);
         if ($j < 4 && $i > 0 && $j > 0)
           $ret = $ret . " |";
       }

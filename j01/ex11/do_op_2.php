@@ -18,7 +18,7 @@ function find_numeric($tab, $split, $input)
     {
       $first_num = array_values(array_filter(explode(' ', $chiffres[0])))[0];
       $second_num = array_values(array_filter(explode(' ', $chiffres[1])))[0];
-      if (is_numeric($first_num) && is_numeric($second_num))
+      if ((is_numeric($first_num) || $first_num == 0) && is_numeric($second_num) || $second_num == 0)
       {
         $ret[] = $first_num;
         $ret[] = $second_num;
@@ -51,6 +51,6 @@ if ($argc == 2)
     echo "Syntax Error\n";
 }
 else
-  echo "Syntax Error\n";
+  echo "Incorrect Parameters\n";
 
 ?>

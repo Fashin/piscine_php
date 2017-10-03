@@ -9,7 +9,7 @@ class Vector
 
   public static $verbose = FALSE;
 
-  function __construct($input)
+  function __construct(Array $input)
   {
     if (array_key_exists('dest', $input) && is_a($input['dest'], 'Vertex'))
     {
@@ -43,9 +43,8 @@ class Vector
     return ($this->$var);
   }
 
-  public function add($vect)
+  public function add(Vector $vect)
   {
-    if (is_a($vect, 'Vector'))
       return (new Vector(array('dest' => new Vertex(array(
         'x' => floatval($this->_x + $vect->_x),
         'y' => floatval($this->_y + $vect->_y),
@@ -53,9 +52,8 @@ class Vector
       )))));
   }
 
-  public function sub($vect)
+  public function sub(Vector $vect)
   {
-    if (is_a($vect, 'Vector'))
       return (new Vector(array('dest' => new Vertex(array(
         'x' => floatval($this->_x - $vect->_x),
         'y' => floatval($this->_y - $vect->_y),
@@ -81,14 +79,13 @@ class Vector
     )))));
   }
 
-  public function dotProduct($vect)
+  public function dotProduct(Vector $vect)
   {
     return (floatval(($this->_x * $vect->_x) + ($this->_y * $vect->_y) + ($this->_z * $vect->_z)));
   }
 
-  public function cos($vect)
+  public function cos(Vector $vect)
   {
-    if (is_a($vect, 'Vector'))
       return (($this->dotProduct($vect)) / (($this->magnitude()) * ($vect->magnitude())));
   }
 
@@ -99,6 +96,12 @@ class Vector
       'y' => floatval(($this->_z * $vect->_x) - ($this->_x * $vect->_z)),
       'z' => floatval(($this->_x * $vect->_y) - ($this->_y * $vect->_x))
     )))));
+  }
+
+  public static function doc()
+  {
+	  if ($content = file_get_contents('./Vector.doc.txt'))
+		  return ($content);
   }
 
   public function __toString()

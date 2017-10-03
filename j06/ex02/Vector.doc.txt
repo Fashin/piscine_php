@@ -1,0 +1,83 @@
+<-----------------------------	Vector
+
+La class Vector creer un vecteur entre deux points de la class Vertex
+
+* * * * * * * * * * * * * * * * * *
+	Rappel : 
+		un vecteur est la soustraction d'un point (ici notre class Vertex)
+		d'arriver et d'un point de depart
+* * * * * * * * * * * * * * * * * *
+
+La class Vector s'instancie :
+$vector = new Vector(array(
+	[
+	'orig' => (Instance Of Vertex)
+	]
+	'dest' => (Instance Of Vertex)
+));
+
+Si il n'y a pas de parametre 'orig' dans l'instance de la class Vector
+cela revient a set up un Vector etant egale au Vertex 'dest' qui lui est obligatoire
+
+La class Vector possede plusieurs fonctions :
+
+(mixed)					_get((mixed) $attribute)
+	-> retourne une propriete de la class Vector
+
+(float)					magnitude(void)
+
+	-> retourne la magnitude de l'instance du Vector
+
+* * * * * * * * * * * * * * * * * *
+	Rappel : 
+		La magnitude d'un vecteur est egale a la racine carre 
+		de la somme au carre des parametre x, y et z du vecteur
+* * * * * * * * * * * * * * * * * *
+
+
+(Instance Of Vector)	normalize(void)
+	-> 	retourne une nouvelle instance de la class Vector calculer
+		sur la division des parametre x, y, z par la magnitude de
+		l'instance Vector appelante.
+
+
+(Instance Of Vector)	add((Vector) $rhs)
+	->	additionne toutes les propriete de la class Vector appelante
+		et celle de la class Vector en parametre et retourne une nouvelle
+		instance de la class Vector.	
+
+(Instance Of Vector)	sub((Vector) $rhs)
+	-> 	soustrait toutes les propriete de la class Vector appelante
+		et celle de la class Vector en parametre et retourne une nouvelle
+		instance de la class Vector
+
+(Instance Of Vector)	scalarProduct((mixed) $scal)
+	->	retourne une nouvelle instance de la class Vector en multipliant
+		ces proprietes avec la valeur $scal passer en parametre
+
+(float)					dotProduct((Vector) $rhs)
+	->	retourne la valeur de la multiplication des proprietes, puis la somme
+		de ces propriete de la class Vector appelante et de celle passer en parametre	
+		return ((x1 * x2) + (y1 * y2) + (z1 * z2));
+		ou on entend 1 la valeur appelante et 2 la valeur en parametre
+
+(float)					cos((float) $f)
+	->	retourne la valeur du cosinus du Vecteur	
+
+* * * * * * * * * * * * * * * * * *
+	Rappel : 
+		Le cosinus de deux vecteurs est egale au dotProduct du vecteur passer
+		en parametre diviser par la magnitude du vecteur parent multiplier 
+		par la magnitude du vecteur en parametre
+* * * * * * * * * * * * * * * * * *		
+
+(Instance Of Vector)	crossProduct((Vector) $rhs)
+	->	retourne une nouvelle instance de la class Vector en effectuant
+		un produit en croix du vecteur appelant par le vecteur en parametre
+		en multipliant tous les parametres comme suit :
+		A => Instance appelante, B => Instance en parametre
+		x = Ay * Bz - Az * By; 
+		y = Az * Bx - Ax * Bz;
+		z = Ax * By - Ay * Bx;
+
+----------------------------->	Vector

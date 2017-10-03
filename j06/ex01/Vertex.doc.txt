@@ -1,0 +1,25 @@
+<------------------------ Vertex
+
+La class Vertex creer un point 3d dans un espace vectorielle.
+Elle a besoin de class Color en require du parent et elle attend en constructeur.
+$vertex = new Vertex(array(
+	'x' => (float), 
+	'y' => (float), 
+	'z' => (float), 
+	[
+	'w' => (float),
+	'color' => (Instance Of Color)
+	]
+));
+Si le parametre 'w' n'est pas set up, l'initialise a 1.0 et si le parametre
+color n'est pas set up instancie la class Color avec 'rgb' => 0xFF
+
+La class Color dispose des fonctions suivantes :
+
+(mixed)		_set($attribut, $value);
+	- modifie la valeur d'une variable de l'instance actuelle de la class Vertex
+
+(mixed)		_get($attribut)
+	- retourne la valeur d'une variable de l'instance actuelle de la class Vertex
+
+------------------------> Vertex
