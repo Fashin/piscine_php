@@ -11,8 +11,9 @@
     {
       if (preg_match('/[0-9]+/', $rep))
       {
-        $rep = intval($rep);
-        if ($rep % 2 == 0)
+        $num = $rep[strlen($rep) - 1];
+		$rep = rtrim($rep);
+        if ($num % 2 == 0)
           echo $rep . " est un chiffre Pair\n";
         else
           echo $rep . " est un chiffre Impair\n";
