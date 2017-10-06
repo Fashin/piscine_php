@@ -7,8 +7,8 @@
 
   function  get ($cookie)
   {
-    if (isset($_COOKIE[$cookie]))
-      echo $_COOKIE[$cookie] . "\n";
+    if ($_COOKIE[$cookie] != "")
+      echo $_COOKIE[$cookie] . PHP_EOL;
   }
 
   function del($cookie)
@@ -16,12 +16,12 @@
     setcookie($cookie, null, -1);
   }
 
-  if (isset($_GET['action']))
+  if ($_GET['action'] != "")
   {
     $action = $_GET['action'];
-    if (isset($_GET['name']))
+    if ($_GET['name'] != "")
     {
-      if (isset($_GET['value']))
+      if ($_GET['value'] != "")
         set($_GET['name'], $_GET['value']);
       else
       {

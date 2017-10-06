@@ -9,7 +9,7 @@
         Bonjour Zaz <br/>
         <?php
           echo "<img src='data:image/png;base64,";
-          $file = base64_encode(file_get_contents('img/42.png'));
+          $file = base64_encode(file_get_contents('../img/42.png'));
           echo $file;
           echo " '/>";
         ?>
