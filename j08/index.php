@@ -1,10 +1,10 @@
 <?php
 
-  define('ROOT', getcwd() . "/");
-  define('CONT', ROOT . 'controller/');
-  require_once(CONT . 'Controller.php');
-  Controller::call_function();
-  $game = new Game();
+define('ROOT', getcwd() . "/");
+define('CONT', ROOT . 'controller/');
+require_once(CONT . 'Controller.php');
+Controller::call_function();
+$game = new Game();
 
 ?>
 <!DOCTYPE html>
@@ -14,6 +14,6 @@
     <title>Warhammer 40000</title>
   </head>
   <body>
-    <iframe src="controller/Event.class.php" width="100%" height="100%"></iframe>
   </body>
 </html>
+<script src="js/create_board.js" charset="utf-8"></script>
