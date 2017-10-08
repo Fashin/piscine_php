@@ -1,14 +1,21 @@
 window.onload = () => {
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', '/mnt/c/Users/cbeauvoi/Documents/cours/piscine_php/j08/tmp/board', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send();
+  xhr.open('GET', 'http://localhost:8080/tmp/board', true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = () => {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        console.log(myArr);
+    if (xhr.readyState == 4 && xhr.status == 200)
+    {
+      let map = JSON.parse(xhr.response);
+      let u_params = {
+        'height' : window.screen.availHeight,
+        'width' : window.screen.availWidth,
+        'map_size' : {
+          'height' : map.length,
+          'width' : map[0].length,
+        },
+      };
+      display_board(map, u_params);
     }
-    else
-      console.log("Error from loading");
   };
+  xhr.send(null);
 }
