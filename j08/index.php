@@ -15,10 +15,8 @@ $game = new Game();
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <canvas id="canvas" width="100%" height="100%">
-      Please upgrade your navigator
-    </canvas>
+    <iframe src="view/board.php" class="board"></iframe>
+    <iframe src="view/tchat.php" class="tchat"></iframe>
+    <iframe src="view/input-tchat.php" class="input-tchat"></iframe>
   </body>
 </html>
-<script src="js/display_board.js" charset="utf-8"></script>
-<script src="js/create_board.js" charset="utf-8"></script>
