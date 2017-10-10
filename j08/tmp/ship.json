@@ -1,0 +1,32 @@
+{
+  "player1" : {
+    "race" : "humain",
+    "ship" : {
+      "ship1" : {
+        "id" : 1,
+        "height" : 2,
+        "width" : 4,
+      },
+      "ship2" : {
+        "id" : 2,
+        "height" : 3,
+        "width" : 3
+      }
+    }
+  },
+  "player2" : {
+    "race" : "zoltan",
+    "ship" : {
+      "ship1" : {
+        "id" : 3,
+        "height" : 4,
+        "width" : 2
+      },
+      "ship2" : {
+        "id" : 4,
+        "height" : 6,
+        "width" : 6
+      }
+    }
+  }
+}

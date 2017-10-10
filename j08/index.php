@@ -5,6 +5,7 @@ define('CONT', ROOT . 'controller/');
 require_once(CONT . 'Controller.php');
 Controller::call_function();
 $game = new Game();
+$game->init_player($game->_get('_board'), $game);
 
 ?>
 <!DOCTYPE html>
@@ -15,8 +16,8 @@ $game = new Game();
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <iframe src="view/board.php" class="board"></iframe>
+    <!-- <iframe src="view/board.php" class="board"></iframe>
     <iframe src="view/tchat.php" class="tchat"></iframe>
-    <iframe src="view/input-tchat.php" class="input-tchat"></iframe>
+    <iframe src="view/input-tchat.php" class="input-tchat"></iframe> -->
   </body>
 </html>
