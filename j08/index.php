@@ -6,6 +6,13 @@ require_once(CONT . 'Controller.php');
 Controller::call_function();
 $game = new Game();
 $game->init_player($game->_get('_board'), $game);
+$my_b = $game->_get('_board')->_get('_board');
+for ($x = 0; $x < count($my_b); $x++)
+{
+  for ($y = 0; $y < count($my_b[$x]); $y++)
+    echo $my_b[$x][$y];
+  echo "<br>";
+}
 
 ?>
 <!DOCTYPE html>

@@ -28,9 +28,9 @@ class Ship
     }
   }
 
-  public function _get($var)
+  public function _getcara()
   {
-    return ($this->$var);
+    return ($this->_cara);
   }
 
 }

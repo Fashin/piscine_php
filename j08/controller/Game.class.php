@@ -16,20 +16,19 @@ class Game extends System
   public function init_player(Plateau $board)
   {
     //session_start();
-    $color = array('red', 'blue', 'green', 'yellow');
+    /* Dans le futur mode multijoueur laisser les joueurs choisir leurs couleur dans le lobby */
+    $color = array('red', 'blue', 'purple', 'yellow');
     $init_data = unserialize(file_get_contents('tmp/ship'));
     if (!($init_data))
       return (0);
-    /* Dans le futur mode multijoueur laisser les joueurs choisir leurs couleur dans le lobby */
     foreach ($init_data as $k => $v)
     {
-      $p = new Player($k, $v->race, $color[$k]);
-      //$p->attribute_position($this->_players, )
-      $p->_set('_ships', $this->init_ship($board, $v, $p));
+      $p = new Player($k, $v->race, $color[count($this->_players)]);
+      $p->attribute_position($this->_players, $board->position);
+      $p->_set_ships($this->init_ship($v, $p));
+      $board->insert_ship($p, $board);
       $this->_players[] = $p;
     }
-    for ($i = 0; $i < count($this->_players); $i++)
-      echo $this->_players[$i];
 
     // ($this->init_ship($board)) ?
     //   $this->insert_log('All ship are generated' . PHP_EOL) :
@@ -40,13 +39,12 @@ class Game extends System
     $cmd->put_tchat($txt, 'tmp/tchat', 1);*/
   }
 
-  private function init_ship(Plateau $board, $cara, Player $p)
+  private function init_ship($cara, Player $p)
   {
     $ret = array();
     foreach ($cara->ship as $k => $v)
     {
       $s = new Ship($k, $v);
-      $board->insert_ship($s, $p);
       $ret[] = $s;
     }
     return ($ret);
@@ -60,14 +58,6 @@ class Game extends System
     ($this->error) ?
       $this->insert_log('Fatal Error : (can\'t generate file system)' . PHP_EOL) :
       $this->insert_log('File System generate, game can be launch' . PHP_EOL);
-    // $my_b = $board->_get('_board');
-    // for ($x = 0; $x < count($my_b); $x++)
-    // {
-    //   for ($y = 0; $y < count($my_b[$x]); $y++)
-    //     echo $my_b[$x][$y];
-    //   echo "<br>";
-    // }
-
   }
 
   public function _get($var)
