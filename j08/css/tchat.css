@@ -1,1 +1,10 @@
-.tchat { position: absolute; bottom: 0; width: 100%; }
+.tchat
+{
+  position: absolute; bottom: 0;
+  width: 100%;
+}
+
+.display_command
+{
+  color: #1FCB23;
+}

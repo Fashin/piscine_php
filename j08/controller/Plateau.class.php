@@ -16,7 +16,7 @@ class Plateau
     //$this->position['NORTH'] = array(0, $this->_width, 10, $this->_width);
     //$this->position['SOUTH'] = array($this->_height - 10, $this->_width, $this->_height, $this->_width);
     $this->position['EAST'] = array(0, 10, $this->_height - 10, 10, "check_east_position");
-    $this->position['WEST'] = array($this->_width - 20, $this->_width - 10, $this->_height - 10, $this->_width - 10, "check_west_position");
+    $this->position['WEST'] = array($this->_width - 20, $this->_width, $this->_height - 10, $this->_width, "check_west_position");
   }
 
   public function generate()
@@ -46,34 +46,59 @@ class Plateau
     }
   }
 
-  public function check_east_position($cara, $plateau, $p_position)
+  public function check_east_position($cara, $plateau, $p_position, $started_pos)
   {
     $s_width = $cara['width'];
     $s_height = $cara['height'];
-    $x = $p_position[0];
-    $obs_x = 0;
-    $is_find = true;
-    for ($x = $p_position[0]; $x < $s_height && $x < $p_position[2]; $x++)
+    $x = $p_position[1];
+    $find = false;
+    $count = 0;
+    while ($x < $p_position[2] && !($find))
     {
-      for ($y = 0; $y < $s_width && $y < $p_position[1] && $is_find; $y++)
+      $y = $p_position[1];
+      $find = true;
+      while ($y > $s_width && $find)
       {
-        echo "check for [ " . $x . "][ " . $y . " ] = " . $plateau[$x][$y] . "<br>";
         if ($plateau[$x][$y] != '.')
-        {
-          $is_find = false;
-        }
+          $find = false;
+        else
+          $y--;
       }
-      if (!($is_find))
-        $x += 2;
-      $is_find = true;
+      if ($find && $count == $s_height && $y == $s_width)
+        return (array($x, $y));
+      else if ($find)
+      {
+        $count++;
+        $find = false;
+      }
+      else
+        $count = 0;
+      $x++;
     }
-    return (array($x, $y));
+    return (array(0, 0));
   }
 
   public function check_west_position($cara, $plateau, $p_position)
   {
     $s_width = $cara['width'];
     $s_height = $cara['height'];
+
+    $count = 0;
+    $find = false;
+    for ($x = 0; $x < $p_position[2] && !($find); $x++)
+    {
+      $find = true;
+      for ($y = $p_position[0]; $y < $p_position[1]; $y++)
+        if ($plateau[$x][$y] != '.')
+          $find = false;
+      if ($find && $count == $s_height)
+        return (array($x, $y - $s_width));
+      else if ($find)
+        $count++;
+      if (!($find))
+        $count = 0;
+      $find = false;
+    }
     return (array(0, 0));
   }
 
@@ -83,19 +108,32 @@ class Plateau
     $color = strtoupper($p->_getcolor()[0]);
     $ships = $p->_get_ships();
     $func = $p_position[4];
+    $pos = array(0 ,0);
     foreach ($ships as $k => $v)
     {
       $plateau = $this->_getboard();
       $cara = $v->_getcara();
-      $pos = $this->$func($cara, $plateau, $p_position);
-      var_dump($pos);
+      $pos = $this->$func($cara, $plateau, $p_position, $pos);
       if ($pos[0] > 0 && $pos[1] > 0)
         for ($i = $pos[0]; $i > $pos[0] - $cara['height']; $i--)
           for ($j = $pos[1]; $j > $pos[1] - $cara['width']; $j--)
             $this->_board[$i][$j] = $color;
-      // if ($pos[0] && $pos[1])
-      //   for ($i = $pos[0]; )
     }
+  }
+
+  function __toString()
+  {
+    $board = $this->_getboard();
+    $height = $this->_get('_height');
+    $width = $this->_get('_width');
+    $txt = "";
+    for ($x = 0; $x < $height; $x++)
+    {
+      for ($y = 0; $y < $width; $y++)
+        $txt = $txt .  $board[$x][$y] . " ";
+      $txt = $txt . "<br>";
+    }
+    return ($txt);
   }
 
   public function _getboard()

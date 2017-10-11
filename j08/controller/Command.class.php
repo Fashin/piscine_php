@@ -3,7 +3,7 @@
 class Command
 {
   public $list_cmd = array(
-    'help',
+    'help'
   );
 
   public function put_tchat($text, $path, $is_player = 0)
@@ -31,7 +31,7 @@ class Command
 
   private function help($cmd)
   {
-    $this->put_tchat('TODO : l\'aide sur les commandes', 1);
+    $this->put_tchat('TODO : l\'aide sur les commandes', '../tmp/tchat',1);
   }
 
   public function launch_command($cmd)

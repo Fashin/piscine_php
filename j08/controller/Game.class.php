@@ -15,7 +15,7 @@ class Game extends System
 
   public function init_player(Plateau $board)
   {
-    //session_start();
+
     /* Dans le futur mode multijoueur laisser les joueurs choisir leurs couleur dans le lobby */
     $color = array('red', 'blue', 'purple', 'yellow');
     $init_data = unserialize(file_get_contents('tmp/ship'));
@@ -25,21 +25,19 @@ class Game extends System
     {
       $p = new Player($k, $v->race, $color[count($this->_players)]);
       $p->attribute_position($this->_players, $board->position);
-      $p->_set_ships($this->init_ship($v, $p));
+      $p->_set_ships($this->init_ship($v));
       $board->insert_ship($p, $board);
       $this->_players[] = $p;
     }
-
-    // ($this->init_ship($board)) ?
-    //   $this->insert_log('All ship are generated' . PHP_EOL) :
-    //   $this->insert_log('Error from ship generation' . PHP_EOL);
-    /*$_SESSION['turn'] = rand(0, count($this->_players));
+    $this->error = $this->save($board);
+    session_start();
+    $_SESSION['turn'] = rand(0, count($this->_players));
     $cmd = new Command();
     $txt = "Its turn to player " . $_SESSION['turn'] . " please activate a ship";
-    $cmd->put_tchat($txt, 'tmp/tchat', 1);*/
+    $cmd->put_tchat($txt, 'tmp/tchat', 1);
   }
 
-  private function init_ship($cara, Player $p)
+  private function init_ship($cara)
   {
     $ret = array();
     foreach ($cara->ship as $k => $v)

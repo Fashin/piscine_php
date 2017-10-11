@@ -33,6 +33,11 @@ class Ship
     return ($this->_cara);
   }
 
+  public function _get($var)
+  {
+    return ($this->$var);
+  }
+
 }
 
  ?>
