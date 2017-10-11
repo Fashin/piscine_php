@@ -1,32 +1,89 @@
 {
-  "player1" : {
-    "race" : "humain",
-    "ship" : {
-      "ship1" : {
-        "id" : 1,
-        "height" : 2,
-        "width" : 4,
-      },
-      "ship2" : {
-        "id" : 2,
-        "height" : 3,
-        "width" : 3
-      }
-    }
-  },
-  "player2" : {
-    "race" : "zoltan",
-    "ship" : {
-      "ship1" : {
-        "id" : 3,
-        "height" : 4,
-        "width" : 2
-      },
-      "ship2" : {
-        "id" : 4,
-        "height" : 6,
-        "width" : 6
-      }
-    }
-  }
+	"player1": {
+		"race": "humain",
+		"ship": {
+			"Honorable Duty": {
+				"id": 1,
+				"height": 1,
+				"width": 4,
+				"armes": {
+					"Batteries laser de flancs": {
+						"charge": 0,
+						"pc": [0, 10],
+						"pi": [11, 20],
+						"pl": [21, 30],
+						"description": "Tir un cône seulement sur les flancs"
+					}
+				},
+				"vitesse": 15,
+				"bouclier": 0,
+				"pos_x": 0,
+				"pos_y": 0,
+				"health": 5,
+				"manoeuvre": 4,
+				"pp": 15
+			},
+			"Sword Of Absolution": {
+				"id": 2,
+				"height": 1,
+				"width": 3,
+				"armes": {
+					"Batteries laser de flancs": {
+						"charge": 0,
+						"pc": [0, 10],
+						"pi": [11, 20],
+						"pl": [21, 30],
+						"description": "Tir un cône seulement sur les flancs"
+					}
+				},
+				"vitesse": 18,
+				"bouclier": 0,
+				"pos_x": 0,
+				"pos_y": 0,
+				"health": 5,
+				"manoeuvre": 3,
+				"pp": 10
+			}
+		}
+	},
+	"player2": {
+		"race": "Ork",
+		"ship": {
+			"Ravajeur": {
+				"id": 3,
+				"height": 4,
+				"width": 2,
+				"armes": {
+					"Flingoz" : {
+						"charge": 0,
+						"pc": [0, 10],
+						"pi": [11, 20],
+						"pl": [21, 30],
+						"description" : "Tir pas loins mais bon"
+					}
+				},
+				"vitesse": 19,
+				"bouclier": 0,
+				"pos_x": 0,
+				"pos_y": 0,
+				"health": 4,
+				"manoeuvre": 3,
+				"pp": 10
+			},
+			"Explozeur": {
+				"id": 4,
+				"height": 1,
+				"width": 5,
+				"armes" : {
+					"Bazoogrot": {
+						"charge": 0,
+						"pc": [0, 20],
+						"pi": [21, 30],
+						"pl": [31, 40],
+						"description": "Tir en avant des dechets"
+					}
+				}
+			}
+		}
+	}
 }

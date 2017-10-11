@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-    <!--<meta http-equiv="refresh" content="3" >-->
+    <meta http-equiv="refresh" content="3" >
     <link rel="stylesheet" href="../css/tchat.css">
   </head>
   <body>
@@ -11,8 +10,15 @@
       <?php
         $content = unserialize(file_get_contents('../tmp/tchat'));
         if ($content)
+        {
           foreach ($content as $k => $v)
-            echo $v['login'] . " : " .  $v['text'] ."<br>";
+          {
+            if (!empty($v['login']))
+              echo $v['login'] . " : ";
+            echo $v['text'];
+            echo "<br>";
+          }
+        }
       ?>
     </div>
   </body>

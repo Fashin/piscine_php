@@ -19,11 +19,13 @@ class Game extends System
     /* Dans le futur mode multijoueur laisser les joueurs choisir leurs couleur dans le lobby */
     $color = array('red', 'blue', 'purple', 'yellow');
     $init_data = unserialize(file_get_contents('tmp/ship'));
+    /*var_dump($init_data);
+    echo "<br><br>";*/
     if (!($init_data))
       return (0);
     foreach ($init_data as $k => $v)
     {
-      $p = new Player($k, $v->race, $color[count($this->_players)]);
+      $p = new Player($k, $v['race'], $color[count($this->_players)]);
       $p->attribute_position($this->_players, $board->position);
       $p->_set_ships($this->init_ship($v));
       $board->insert_ship($p, $board);
@@ -32,16 +34,17 @@ class Game extends System
     $this->error = $this->save($board);
     $rand = rand(0, (count($this->_players) - 1));
     $name = $this->_players[$rand]->_name;
-    $_SESSION['turn'] = $name;
+    $_SESSION['turn'] = $rand;
+    $_SESSION['name'] = $name;
     $cmd = new Command();
-    $txt = "Its turn " . $_SESSION['turn'] . " please activate a ship";
+    $txt = "Its turn " . $_SESSION['name'] . " please activate a ship";
     $cmd->put_tchat($txt, 'tmp/tchat', 1);
   }
 
   private function init_ship($cara)
   {
     $ret = array();
-    foreach ($cara->ship as $k => $v)
+    foreach ($cara['ship'] as $k => $v)
     {
       $s = new Ship($k, $v);
       $ret[] = $s;

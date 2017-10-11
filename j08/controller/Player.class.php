@@ -41,6 +41,13 @@ class Player
     $this->_ships = $ships;
   }
 
+  public function _set_ship_position($pos, $id_ship)
+  {
+    $ship = $this->_ships[$id_ship];
+    $ship->_cara['pos_x'] = $pos[0];
+    $ship->_cara['pos_y'] = $pos[1];
+  }
+
   public function _get($var)
   {
     return ($this->$var);
@@ -57,7 +64,7 @@ class Player
     $txt = $txt . $this->_color . " and the position : " . $this->position . "<br>";
     $txt = $txt . " have the ships : <br>";
     foreach ($this->_ships as $k => $v)
-      $txt = $txt . "==>" . $v->_get('_name') . "<br>";
+      $txt = $txt . "==>" . $v . "<br>";
     $txt = $txt . "<br>";
     return ($txt);
   }

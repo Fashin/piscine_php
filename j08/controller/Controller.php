@@ -10,6 +10,7 @@
     {
       require_once(CONT . 'System.class.php');
       require_once(CONT . 'Command.class.php');
+      require_once(CONT . 'Armes.class.php');
       require_once(CONT . 'Player.class.php');
       require_once(CONT . 'Ship.class.php');
       require_once(CONT . 'Game.class.php');
