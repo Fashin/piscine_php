@@ -3,7 +3,10 @@
 class Command
 {
   public $list_cmd = array(
-    'help'
+    'help',
+    'ship_info',
+    'activate',
+
   );
 
   public function put_tchat($text, $path, $is_player = 0)
@@ -34,12 +37,42 @@ class Command
     $this->put_tchat('TODO : l\'aide sur les commandes', '../tmp/tchat',1);
   }
 
+  private function ship_info($cmd)
+  {
+    session_start();
+    $actual_player = $_SESSION['turn'];
+    $game = json_decode($_SESSION['data']);
+    var_dump($game);
+    $players = $game->_players;
+    $cmd = (count($cmd) > 1) ? $cmd[1] : false;
+    for ($i = 0; $i < count($players); $i++)
+    {
+      if ($players[$i]->_name == $actual_player)
+      {
+        $ships = $players[$i]->_ships;
+        $txt = "";
+        if (!($cmd))
+          foreach ($ships as $k => $v)
+            $txt = $txt . $v->_name . " ; ";
+        else
+          foreach ($ships as $k => $v)
+            if ($v->_name == $cmd)
+              $txt = $v->_name . " : more informations in coming";
+        if (empty($txt))
+          $this->put_tchat("You don't have the ship : " . $cmd, '../tmp/tchat', 1);
+        else
+          $this->put_tchat('You have the ships : ' . $txt, '../tmp/tchat', 1);
+      }
+    }
+  }
+
   public function launch_command($cmd)
   {
-    $cmd = substr($cmd, 1, strlen($cmd));
+    $cmd = explode(' ', $cmd);
+    $s_cmd = substr($cmd[0], 1, strlen($cmd[0]));
     for ($i = 0; $i < count($this->list_cmd); $i++)
     {
-      if ($cmd == $this->list_cmd[$i])
+      if ($s_cmd == $this->list_cmd[$i])
       {
         $exec = $this->list_cmd[$i];
         $this->$exec($cmd);
@@ -53,7 +86,7 @@ if (isset($_POST['command']) && !empty($_POST['command']))
 {
   $command = new Command();
   $command->put_tchat($_POST['command'], '../tmp/tchat');
-  header('Location:../view/input-tchat.php');
+  //header('Location:../view/input-tchat.php');
 }
 
 

@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="1" >
+
+    <!--<meta http-equiv="refresh" content="3" >-->
     <link rel="stylesheet" href="../css/tchat.css">
   </head>
   <body>

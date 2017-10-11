@@ -1,1 +1,1 @@
-a:1:{i:0;a:3:{s:5:"login";s:1:"a";s:4:"time";s:5:"00:14";s:3:"msg";s:7:"bonjour";}}
+a:2:{i:0;a:3:{s:5:"login";s:1:"a";s:4:"time";s:5:"00:14";s:3:"msg";s:7:"bonjour";}i:1;a:3:{s:5:"login";s:4:"test";s:4:"time";s:5:"18:12";s:3:"msg";s:12:"salut a tous";}}

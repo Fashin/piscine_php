@@ -2,11 +2,11 @@
 
 class Player
 {
-  private $_name;
-  private $_race;
-  private $_id;
-  private $_ships = array();
-  private $_color;
+  public $_name;
+  public $_race;
+  public $_id;
+  public $_ships = array();
+  public $_color;
   public $position;
 
   function __construct($p_name, $p_race, $p_color)
@@ -39,6 +39,11 @@ class Player
   public function _set_ships($ships)
   {
     $this->_ships = $ships;
+  }
+
+  public function _get($var)
+  {
+    return ($this->$var);
   }
 
   public function _getcolor()

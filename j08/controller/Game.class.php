@@ -2,8 +2,8 @@
 
 class Game extends System
 {
-  private $_players = array();
-  private $_board;
+  public $_players = array();
+  public $_board;
   public $error = 0;
 
   private function save(Plateau $board)
@@ -30,10 +30,11 @@ class Game extends System
       $this->_players[] = $p;
     }
     $this->error = $this->save($board);
-    session_start();
-    $_SESSION['turn'] = rand(0, count($this->_players));
+    $rand = rand(0, (count($this->_players) - 1));
+    $name = $this->_players[$rand]->_name;
+    $_SESSION['turn'] = $name;
     $cmd = new Command();
-    $txt = "Its turn to player " . $_SESSION['turn'] . " please activate a ship";
+    $txt = "Its turn " . $_SESSION['turn'] . " please activate a ship";
     $cmd->put_tchat($txt, 'tmp/tchat', 1);
   }
 
@@ -61,6 +62,11 @@ class Game extends System
   public function _get($var)
   {
     return ($this->$var);
+  }
+
+  public function _getplayers()
+  {
+    return ($this->_players);
   }
 }
 

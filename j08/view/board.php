@@ -44,27 +44,3 @@
     ?>
   </body>
 </html>
-
-<?php
-
-/*
-$height = count($board);
-for ($x = 0; $x < $height; $x++)
-{
-  $width = count($board[$x]);
-  for ($y = 0; $y < $width; $y++)
-  {
-    if ($board[$x][$y] != "")
-    {
-      if ($board[$x][$y] != '.')
-        echo '<span class="tuile ' . get_color($board[$x][$y]) . '"></span>';
-      else
-        echo '<span class="tuile herbe"></span>';
-    }
-  }
-  echo "<br>";
-}
-
- */
-
-?>

@@ -3,9 +3,9 @@
 class Ship
 {
 
-  private $_name;
-  private $_id;
-  private $_cara = array(
+  public $_name;
+  public $_id;
+  public $_cara = array(
     'height'  =>  0,
     'width'   =>  0
   );

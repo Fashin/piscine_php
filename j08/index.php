@@ -1,11 +1,13 @@
 <?php
 
+session_start();
 define('ROOT', getcwd() . "/");
 define('CONT', ROOT . 'controller/');
 require_once(CONT . 'Controller.php');
 Controller::call_function();
 $game = new Game();
 $game->init_player($game->_get('_board'), $game);
+$_SESSION['data'] = json_encode($game);
 
 ?>
 <!DOCTYPE html>
