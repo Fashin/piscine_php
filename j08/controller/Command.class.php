@@ -8,7 +8,7 @@ class Command
     'activate' => "Activate a ship",
     'attribute' => "Attribute your power point. sequence : /attribute [vitesse | bouclier | armes | health] [number of points] if you activate \"armes\" name specified",
     'next' => "Finish your phase turn and go to the next phase",
-    'moveTo' => "Move your activated ship, /moveTo [right | left | top | bottom] [number of case your want]",
+    'moveTo' => "Move your activated ship, /moveTo [east | west | north | south] [number of case you want]",
   );
 
   public function put_tchat($text, $path, $is_player = 0, $display_name = 1)
@@ -38,14 +38,15 @@ class Command
   private function next($cmd)
   {
     /**
-     * Maybe needed to review this, for exemple with the ship activation and for see the next phase appel
+     * Maybe needed to review this, for exemple with the ship activation and for see the next phase calling and switch player ?
      */
     session_start();
-    if ($_SESSION['phase'] > 0)
+    if ($_SESSION['phase'] + 1 < 3)
     {
-      if ($_SESSION['phase'] + 1 < 4)
-        $_SESSION['phase'] = $_SESSION['phase'] + 1;
-      else
+      $_SESSION['phase'] = $_SESSION['phase'] + 1;
+    }
+    else
+    {
         $_SESSION['phase'] = 0;
     }
   }
@@ -55,18 +56,178 @@ class Command
     session_start();
     if ($_SESSION['phase'] == 1)
     {
-      $game = json_decode($_SESSION['data']);
-      $player = $game->_players[$_SESSION['turn']];
-      $ships = $player->_ships;
-      $ship = null;
-      foreach ($ships as $k => $v)
-        if ($v->is_activated)
-          $ship = $v->orientation;
-      if ($ship)
+      if (isset($cmd[1]) && $cmd[2])
       {
-
+        $game = json_decode($_SESSION['data']);
+        $player = $game->_players[$_SESSION['turn']];
+        $ships = $player->_ships;
+        $ship = null;
+        $id_ship = null;
+        foreach ($ships as $k => $v)
+        {
+          if ($v->is_activated)
+          {
+            $ship = $v;
+            $id_ship = $k;
+          }
+        }
+        if ($ship)
+        {
+          $direction = strtoupper($cmd[1]);
+          $value = intval($cmd[2]);
+          $possible_direction = array('WEST', 'NORTH', 'EAST', 'SOUTH');
+          if (!(in_array($direction, $possible_direction)))
+            $this->put_tchat("Please write a correct direction", '../tmp/tchat', 1);
+          else
+          {
+            /*
+            *   For the rush, this comportment don't check the rules "if you move value < manoeuvre"
+            *   vous n'etes plus considerer comme immobile mais activable seulement si vous etes immobile
+             */
+            if ($ship->_cara->is_moving > 0 && $direction < $ship->_cara->manoeuvre)
+              $this->put_tchat("You are in movement, you can't moving less than : " . $ship->_cara->manoeuvre, '../tmp/tchat', 1);
+            else
+            {
+              $speed = $ship->_cara->vitesse;
+              if ($speed - $value >= 0)
+              {
+                $board = unserialize(file_get_contents('../tmp/board'));
+                $obstacle = false;
+                $start_x = intval($ship->_cara->pos_x);
+                $start_y = intval($ship->_cara->pos_y);
+                $height = intval($ship->_cara->height);
+                $width = intval($ship->_cara->width);
+                $this->put_tchat("start_x = " . $start_x . " ; start_y = " . $start_y, '../tmp/tchat', 1, 0);
+                $new_direction = -1;
+                $length = count($possible_direction);
+                for ($i = 0; $i < $length; $i++)
+                {
+                  if ($direction == $possible_direction[$i])
+                  {
+                    if ($i == 0)
+                      $new_direction = 1;
+                    else if ($i == $length - 1)
+                      $new_direction = 0;
+                    else
+                    {
+                      if ($ship->orientation == $possible_direction[$i - 1])
+                        $new_direction = 1;
+                      else
+                        $new_direction = 0;
+                    }
+                  }
+                }
+                if (($new_direction == 0 || $new_direction == 1) || $direction == $ship->orientation)
+                {
+                    if ($direction == "NORTH")
+                    {
+                      $x = $start_x - $value;
+                      if ($x >= 0 && $x < count($board))
+                      {
+                        for ($i = 0; $i < $width; $i++)
+                        {
+                          $board[$x][$start_y] = strtoupper($player->_color[0]);
+                          $x++;
+                        }
+                      }
+                      $pos_x = $start_x - $value;
+                      $pos_y = $start_y;
+                    }
+                    else if ($direction == "SOUTH")
+                    {
+                      $x = $start_x + $value;
+                      if ($x >= 0 && $x < count($board))
+                      {
+                        for ($i = 0; $i < $width; $i++)
+                        {
+                          $board[$x][$start_y] = strtoupper($player->_color[0]);
+                          $x--;
+                        }
+                      }
+                      $pos_x = $start_x + $value;
+                      $pos_y = $start_y;
+                    }
+                    else if ($direction == "EAST")
+                    {
+                      $y = $start_y + $value;
+                      if ($y >= 0 && $y < count($board[$start_x]))
+                      {
+                        for ($i = 0; $i < $width; $i++)
+                        {
+                          $board[$start_x][$y] = strtoupper($player->_color[0]);
+                          $y--;
+                        }
+                      }
+                      $pos_x = $start_x;
+                      $pos_y = $start_y + $value;
+                    }
+                    else if ($direction == "WEST")
+                    {
+                      $y = $start_y - $value;
+                      if ($y >= 0 && $y < count($board[$start_x]));
+                      {
+                        for ($i = 0; $i < $width; $i++)
+                        {
+                          $board[$start_x][$y] = strtoupper($player->_color[0]);
+                          $y++;
+                        }
+                      }
+                      $pos_x = $start_x;
+                      $pos_y = $start_y - $value;
+                    }
+                    $i = $height;
+                    while ($i > 0)
+                    {
+                      $j = $width;
+                      $this->put_tchat("height : " . $height . " & width : " . $width, '../tmp/tchat', 1, 0);
+                      while ($j >= 0)
+                      {
+                        $this->put_tchat("clean up : " . $start_x . " ; " . $start_y, '../tmp/tchat', 1, 0);
+                        $board[$start_x][$start_y] = '.';
+                        if ($ship->orientation == "EAST")
+                          $start_y = $start_y - 1;
+                        else if ($ship->orientation == "WEST")
+                          $start_y = $start_y + 1;
+                        else if ($ship->orientation == "NORTH")
+                          $start_x = $start_x + 1;
+                        else if ($ship->orientation == "SOUTH")
+                          $start_x = $start_x - 1;
+                        $j--;
+                      }
+                      /*
+                        don't activate that, assumed ship make 1 height, maybe activate it on rush ?
+                        $start_x = $start_x + 1;
+                      else if ($ship->orientation == "WEST")
+                        $start_y = $start_y - 1;
+                      else if ($ship->orientation == "NORTH")
+                        $start_x = $start_x + 1;
+                      else if ($ship->orientation == "SOUTH")
+                        $start_x = $start_x - 1;*/
+                      $i--;
+                    }
+                    $this->put_tchat("pos_x = " . $pos_x . " ; pos_y = " . $pos_y, '../tmp/tchat', 1, 0);
+                    $game->_players[$_SESSION['turn']]->_ships[$id_ship]->orientation = $direction;
+                    $game->_players[$_SESSION['turn']]->_ships[$id_ship]->_cara->pos_x = $pos_x;
+                    $game->_players[$_SESSION['turn']]->_ships[$id_ship]->_cara->pos_y = $pos_y;
+                    $_SESSION['data'] = json_encode($game);
+                    file_put_contents('../tmp/board', serialize($board));
+                    $_SESSION['phase'] = 2;
+                  }
+                  else
+                    $this->put_tchat("You can't move more 90 degrees right or left", '../tmp/tchat', 1);
+                }
+              }
+              else
+                $this->put_tchat("You can't move " . $direction . " of " . $value . " because you have " . $speed . " moving point", '../tmp/tchat', 1);
+            }
+          }
+        }
       }
+      else
+        $this->put_tchat("Please specify a direction and a value", '../tmp/tchat', 1);
     }
+    else
+      $this->put_tchat("Please activate a ship or finish your ordre phase before moving", '../tmp/tchat', 1);
   }
 
   private function help($cmd)

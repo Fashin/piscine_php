@@ -15,8 +15,8 @@ class Plateau
     $this->_obstacle_size = (($obstacle_size = intval($obstacle_size)) > 0) ? $obstacle_size : 10;
     //$this->position['NORTH'] = array(0, $this->_width, 10, $this->_width);
     //$this->position['SOUTH'] = array($this->_height - 10, $this->_width, $this->_height, $this->_width);
-    $this->position['EAST'] = array(0, 10, $this->_height - 10, 10, "check_east_position");
-    $this->position['WEST'] = array($this->_width - 20, $this->_width, $this->_height - 10, $this->_width, "check_west_position");
+    $this->position['WEST'] = array(0, 10, $this->_height - 10, 10, "check_east_position");
+    $this->position['EAST'] = array($this->_width - 20, $this->_width, $this->_height - 10, $this->_width, "check_west_position");
   }
 
   public function generate()
@@ -114,7 +114,7 @@ class Plateau
       $plateau = $this->_getboard();
       $cara = $v->_getcara();
       $pos = $this->$func($cara, $plateau, $p_position, $pos);
-      $p->_set_ship_position($pos, $k, $p->position);
+      $p->_set_ship_position($pos, $k, $p->position, $cara);
       for ($i = $pos[0]; $i > $pos[0] - $cara['height']; $i--)
         for ($j = $pos[1]; $j > $pos[1] - $cara['width']; $j--)
           $this->_board[$i][$j] = $color;

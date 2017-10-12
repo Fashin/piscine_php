@@ -23,12 +23,12 @@ class Player
     {
       // This array is only for multiplayer 1v1v1v1
       //$num_position = array(0 => 'NORTH', 1 => 'SOUTH', 2 => 'EAST', 3 => 'WEST');
-      $num_position = array(1 => 'WEST');
+      $num_position = array(1 => 'EAST');
       for ($i = 0; $i < count($players); $i++);
       $this->position = $num_position[$i];
     }
     else
-      $this->position = 'EAST';
+      $this->position = 'WEST';
   }
 
   public function _get_ships()
@@ -41,12 +41,12 @@ class Player
     $this->_ships = $ships;
   }
 
-  public function _set_ship_position($pos, $id_ship, $orientation)
+  public function _set_ship_position($pos, $id_ship, $orientation, $cara)
   {
     $reverse = array('EAST' => 'WEST', 'WEST' => 'EAST', 'NORTH' => 'SOUTH', 'SOUTH' => 'NORTH');
     $ship = $this->_ships[$id_ship];
     $ship->_cara['pos_x'] = $pos[0];
-    $ship->_cara['pos_y'] = $pos[1];
+    $ship->_cara['pos_y'] = ($orientation == 'EAST') ? $pos[1] - $cara['width'] + 1 : $ship->_cara['pos_y'] = $pos[1] + 1;
     $ship->orientation = $reverse[$orientation];
   }
 

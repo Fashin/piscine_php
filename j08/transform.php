@@ -55,7 +55,7 @@
   		"ship": {
   			"Ravajeur": {
   				"id": 3,
-  				"height": 4,
+  				"height": 1,
   				"width": 2,
   				"armes": {
   					"Flingoz" : {

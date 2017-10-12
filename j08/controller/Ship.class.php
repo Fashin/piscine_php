@@ -18,7 +18,8 @@ class Ship
     'health_max' => 0,
     'manoeuvre' => 0,
     'pp' => 0,
-    'pp_actual' => -1
+    'pp_actual' => -1,
+    "is_moving" => 0
   );
   public $is_activated;
 

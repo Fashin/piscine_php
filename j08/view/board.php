@@ -21,12 +21,22 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../css/board.css">
+
+    <!--<meta http-equiv="refresh" content="3">-->
   </head>
   <body>
     <?php
       $board = unserialize(file_get_contents('../tmp/board'));
       if ($board)
       {
+        /*for ($i = 0; $i < count($board); $i++)
+        {
+          for ($j = 0; $j < count($board[$i]); $j++)
+          {
+            echo $board[$i][$j] . " ";
+          }
+          echo "<br>";
+        }*/
         echo "<table>";
         $height = count($board) - 1;
         for ($x = 0; $x < $height; $x++)

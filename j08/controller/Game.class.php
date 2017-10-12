@@ -53,7 +53,7 @@ class Game extends System
 
   function __construct()
   {
-    $this->_board = new Plateau(150, 100, 10);
+    $this->_board = new Plateau(60, 40, 2);
     $this->_board->generate();
     $this->error = $this->save($this->_board);
     ($this->error) ?
