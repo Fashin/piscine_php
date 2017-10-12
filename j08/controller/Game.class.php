@@ -19,8 +19,6 @@ class Game extends System
     /* Dans le futur mode multijoueur laisser les joueurs choisir leurs couleur dans le lobby */
     $color = array('red', 'blue', 'purple', 'yellow');
     $init_data = unserialize(file_get_contents('tmp/ship'));
-    /*var_dump($init_data);
-    echo "<br><br>";*/
     if (!($init_data))
       return (0);
     foreach ($init_data as $k => $v)
@@ -39,6 +37,7 @@ class Game extends System
     $cmd = new Command();
     $txt = "Its turn " . $_SESSION['name'] . " please activate a ship";
     $cmd->put_tchat($txt, 'tmp/tchat', 1);
+    $_SESSION['phase'] = 0;
   }
 
   private function init_ship($cara)

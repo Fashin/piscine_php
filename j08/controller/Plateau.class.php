@@ -114,7 +114,7 @@ class Plateau
       $plateau = $this->_getboard();
       $cara = $v->_getcara();
       $pos = $this->$func($cara, $plateau, $p_position, $pos);
-      $p->_set_ship_position($pos, $k);
+      $p->_set_ship_position($pos, $k, $p->position);
       for ($i = $pos[0]; $i > $pos[0] - $cara['height']; $i--)
         for ($j = $pos[1]; $j > $pos[1] - $cara['width']; $j--)
           $this->_board[$i][$j] = $color;

@@ -9,7 +9,7 @@
   				"height": 1,
   				"width": 4,
   				"armes": {
-  					"Batteries laser de flancs": {
+  					"Batteries_laser_de_flancs": {
   						"charge": 0,
   						"pc": [0, 10],
   						"pi": [11, 20],
@@ -22,6 +22,7 @@
   				"pos_x": 0,
   				"pos_y": 0,
   				"health": 5,
+  				"health_max": 5,
   				"manoeuvre": 4,
   				"pp": 15
   			},
@@ -30,7 +31,7 @@
   				"height": 1,
   				"width": 3,
   				"armes": {
-  					"Batteries laser de flancs": {
+  					"Batteries_laser_de_flancs": {
   						"charge": 0,
   						"pc": [0, 10],
   						"pi": [11, 20],
@@ -43,6 +44,7 @@
   				"pos_x": 0,
   				"pos_y": 0,
   				"health": 5,
+  				"health_max": 5,
   				"manoeuvre": 3,
   				"pp": 10
   			}
@@ -68,7 +70,8 @@
   				"bouclier": 0,
   				"pos_x": 0,
   				"pos_y": 0,
-  				"health": 4,
+  				"health_max": 4,
+          "health": 4,
   				"manoeuvre": 3,
   				"pp": 10
   			},
@@ -90,6 +93,7 @@
   				"pos_x": 0,
   				"pos_y": 0,
   				"health": 4,
+          "health_max": 4,
   				"manoeuvre": 3,
   				"pp": 10
   			}

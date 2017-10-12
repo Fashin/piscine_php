@@ -6,6 +6,7 @@ class Ship
   public $_name;
   public $_id;
   public $armes;
+  public $orientation;
   public $_cara = array(
     'height'  =>  0,
     'width'   =>  0,
@@ -14,8 +15,10 @@ class Ship
     'pos_x' => 0,
     'pos_y' => 0,
     'health' => 0,
+    'health_max' => 0,
     'manoeuvre' => 0,
     'pp' => 0,
+    'pp_actual' => -1
   );
   public $is_activated;
 

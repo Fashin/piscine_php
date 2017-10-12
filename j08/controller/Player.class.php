@@ -41,11 +41,13 @@ class Player
     $this->_ships = $ships;
   }
 
-  public function _set_ship_position($pos, $id_ship)
+  public function _set_ship_position($pos, $id_ship, $orientation)
   {
+    $reverse = array('EAST' => 'WEST', 'WEST' => 'EAST', 'NORTH' => 'SOUTH', 'SOUTH' => 'NORTH');
     $ship = $this->_ships[$id_ship];
     $ship->_cara['pos_x'] = $pos[0];
     $ship->_cara['pos_y'] = $pos[1];
+    $ship->orientation = $reverse[$orientation];
   }
 
   public function _get($var)

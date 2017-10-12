@@ -82,7 +82,14 @@
 						"pl": [31, 40],
 						"description": "Tir en avant des dechets"
 					}
-				}
+				},
+				"vitesse": 19,
+				"bouclier": 0,
+				"pos_x": 0,
+				"pos_y": 0,
+				"health": 4,
+				"manoeuvre": 3,
+				"pp": 10
 			}
 		}
 	}
