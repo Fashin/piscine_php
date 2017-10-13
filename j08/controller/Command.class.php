@@ -9,6 +9,7 @@ class Command
     'attribute' => "Attribute your power point. sequence : /attribute [vitesse | bouclier | armes | health] [number of points] if you activate \"armes\" name specified",
     'next' => "Finish your phase turn and go to the next phase",
     'moveTo' => "Move your activated ship, /moveTo [east | west | north | south] [number of case you want]",
+    'shoot' => "Shoot on an enemy with a specified weapon name only if you have a direct line, /shoot [weapon name]",
   );
 
   public function put_tchat($text, $path, $is_player = 0, $display_name = 1)
@@ -44,13 +45,33 @@ class Command
     if ($_SESSION['phase'] + 1 < 3)
     {
       $_SESSION['phase'] = $_SESSION['phase'] + 1;
+      if ($_SESSION['phase'] == 1)
+      {
+        $this->put_tchat("* * * * * * * * * * * * *", '../tmp/tchat', 1, 0);
+        $this->put_tchat("-> Phase de mouvement <-", '../tmp/tchat', 1, 0);
+        $this->put_tchat("* * * * * * * * * * * * *", '../tmp/tchat', 1, 0);
+      }
+      else
+      {
+        $this->put_tchat("* * * * * * * * * *", '../tmp/tchat', 1, 0);
+        $this->put_tchat("-> Phase de tirs <-", '../tmp/tchat', 1, 0);
+        $this->put_tchat("* * * * * * * * * *", '../tmp/tchat', 1, 0);
+      }
     }
     else
     {
-        $_SESSION['phase'] = 0;
+      //Here the message from the end of a round from a player ship activation
+      $_SESSION['phase'] = 0;
     }
   }
 
+  /**
+   * here you need to soustraire les points de vitesse utilise avec les points de vitesse disponible avant de push /!\
+   * Compter le nombre de points de vitesse restant avant de passer a la phase de shoot
+   * peut etre gerer les obstacles au passage ? et le fait de sortir du plateau
+   * @param  [type] $cmd [description]
+   * @return [type]      [description]
+   */
   private function moveTo($cmd)
   {
     session_start();
@@ -84,7 +105,7 @@ class Command
             *   For the rush, this comportment don't check the rules "if you move value < manoeuvre"
             *   vous n'etes plus considerer comme immobile mais activable seulement si vous etes immobile
              */
-            if ($ship->_cara->is_moving > 0 && $direction < $ship->_cara->manoeuvre)
+             if ($ship->_cara->is_moving > 0 && $direction < $ship->_cara->manoeuvre)
               $this->put_tchat("You are in movement, you can't moving less than : " . $ship->_cara->manoeuvre, '../tmp/tchat', 1);
             else
             {
@@ -111,9 +132,9 @@ class Command
                     else
                     {
                       if ($ship->orientation == $possible_direction[$i - 1])
-                        $new_direction = 1;
-                      else
-                        $new_direction = 0;
+                      $new_direction = 1;
+                    else
+                      $new_direction = 0;
                     }
                   }
                 }
@@ -211,12 +232,14 @@ class Command
                     $game->_players[$_SESSION['turn']]->_ships[$id_ship]->_cara->pos_y = $pos_y;
                     $_SESSION['data'] = json_encode($game);
                     file_put_contents('../tmp/board', serialize($board));
-                    $_SESSION['phase'] = 2;
+                    /*$_SESSION['phase'] = 2;
+                    $this->put_tchat("* * * * * * * * * *", '../tmp/tchat', 1, 0);
+                    $this->put_tchat("-> Phase de tirs <-", '../tmp/tchat', 1, 0);
+                    $this->put_tchat("* * * * * * * * * *", '../tmp/tchat', 1, 0);*/
                   }
                   else
                     $this->put_tchat("You can't move more 90 degrees right or left", '../tmp/tchat', 1);
                 }
-              }
               else
                 $this->put_tchat("You can't move " . $direction . " of " . $value . " because you have " . $speed . " moving point", '../tmp/tchat', 1);
             }
@@ -359,10 +382,12 @@ class Command
           }
           else
           {
-            $this->put_tchat('Order phase terminated', '../tmp/tchat', 1);
             $_SESSION['phase'] = 1;
             $game->_players[$actual_player]->_ships[$id_ship] = $ship;
             $_SESSION['data'] = json_encode($game);
+            $this->put_tchat("* * * * * * * * * * * * *", '../tmp/tchat', 1, 0);
+            $this->put_tchat("-> Phase de mouvement <-", '../tmp/tchat', 1, 0);
+            $this->put_tchat("* * * * * * * * * * * * *", '../tmp/tchat', 1, 0);
           }
         }
       }
@@ -441,6 +466,85 @@ class Command
       else
         $this->put_tchat('You have the ships : ' . $txt, '../tmp/tchat', 1);
     }
+  }
+
+  private function shoot($cmd)
+  {
+    session_start();
+    if ($_SESSION['phase'] == 2)
+    {
+      if (isset($cmd[1]))
+      {
+        $game = json_decode($_SESSION['data']);
+        $player = $game->_players[$_SESSION['turn']];
+        $ships = $player->_ships;
+        $ship_id = null;
+        $ship = null;
+        foreach ($ships as $k => $v)
+        {
+          if ($v->is_activated)
+          {
+            $ship_id = $k;
+            $ship = $v;
+          }
+        }
+        if ($ship)
+        {
+            $weapons = $ship->armes;
+            $weapon = null;
+            $weapon_id = null;
+            foreach ($weapons as $k => $v)
+            {
+              if ($v->name == $cmd[1])
+              {
+                $weapon = $v;
+                $weapon_id = $k;
+              }
+            }
+            if ($weapon)
+            {
+              $orientation = $ship->orientation;
+              $this->put_tchat("orientation : " . $orientation, '../tmp/tchat', 1, 0);
+              if ($orientation == "NORTH")
+              {
+                $x = $ship->_cara->pos_x;
+                $max_range = $weapon->range[2][1];
+                $i = 0;
+                $board = unserialize(file_get_contents('../tmp/board'));
+                while ($i < $max_range && $x - $i >= 0)
+                {
+
+                  $x_location = $x - $i;
+                  /*
+                    This formule work great, just need to review on to shot on the manual and apply the correct parameters
+                   */
+                  //if ($board[$x_location][$ship->_cara->pos_y] != '.')
+                  $i++;
+                }
+              }
+              else if ($orientation == "SOUTH")
+              {
+
+              }
+              else if ($orientation == "EAST")
+              {
+
+              }
+              else if ($orientation == "WEST")
+              {
+
+              }
+              file_put_contents('../tmp/board', serialize($board));
+            }
+            else
+              $this->put_tchat("The weapon " . $cmd[1] . " don't exists on the ship " . $ship->name . " type /ship_info " . $ship->name . " for more informations on the ship", '../tmp/tchat', 1);
+        }
+      }
+      else
+        $this->put_tchat("Please setup a weapon name, type /help for see all commands or /help shoot", '../tmp/tchat', 1);
+    }
+    else
+      $this->put_tchat("Please finish your attribute or your movement phase before shoot, type /help for see all commands", '../tmp/tchat', 1);
   }
 
   public function launch_command($cmd)

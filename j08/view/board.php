@@ -8,7 +8,8 @@
       'X' => 'obstacle',
       'P' => 'purple_player',
       'Y' => 'yellow_player',
-      '.' => 'herbe'
+      '.' => 'herbe',
+      'O' => 'shoot'
     );
     if (in_array($c, array_keys($tab)))
       return ($tab[$c]);
@@ -21,8 +22,8 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../css/board.css">
-
-    <!--<meta http-equiv="refresh" content="3">-->
+    <meta http-equiv="refresh" content="3">
+    <!---->
   </head>
   <body>
     <?php

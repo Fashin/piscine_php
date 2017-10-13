@@ -6,6 +6,8 @@ td { border: 1px solid black; }
 
 .herbe { background: green; }
 
+.shoot { background: black; }
+
 .obstacle { background: brown; }
 
 .red_player { background: red; }

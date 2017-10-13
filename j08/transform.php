@@ -9,7 +9,7 @@
   				"height": 1,
   				"width": 4,
   				"armes": {
-  					"Batteries_laser_de_flancs": {
+  					"laser_de_flancs": {
   						"charge": 0,
   						"pc": [0, 10],
   						"pi": [11, 20],
@@ -31,7 +31,7 @@
   				"height": 1,
   				"width": 3,
   				"armes": {
-  					"Batteries_laser_de_flancs": {
+  					"laser_de_flancs": {
   						"charge": 0,
   						"pc": [0, 10],
   						"pi": [11, 20],
@@ -58,7 +58,7 @@
   				"height": 1,
   				"width": 2,
   				"armes": {
-  					"Flingoz" : {
+  					"flingoz" : {
   						"charge": 0,
   						"pc": [0, 10],
   						"pi": [11, 20],
@@ -80,7 +80,7 @@
   				"height": 1,
   				"width": 5,
   				"armes" : {
-  					"Bazoogrot": {
+  					"bazoogrot": {
   						"charge": 0,
   						"pc": [0, 20],
   						"pi": [21, 30],
