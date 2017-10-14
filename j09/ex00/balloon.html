@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+    .ballon
+    {
+      position: absolute;
+      left: 38vw; top : 26vh;
+      background-color: red;
+      height: 200px; width: 200px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="ballon">
+    </div>
+  </body>
+  <script type="text/javascript">
+    let ballon = document.getElementsByClassName('ballon')[0];
+    let color = ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)'];
+
+    let change_background = (actual_color, div) => {
+      for (let i = 0; i < color.length; i++)
+      {
+        if (actual_color == color[i])
+        {
+          if (i == color.length - 1)
+            div.style.background = color[0];
+          else
+            div.style.background = color[i + 1];
+        }
+      }
+    }
+
+    let change_length = (div, add_length, height) => {
+      if (height + add_length < 420 && height + add_length >= 200)
+      {
+        div.style.height = height + add_length + 'px';
+        div.style.width = height + add_length + 'px';
+      }
+      else if (height)
+      {
+        div.style.height = 200 + 'px';
+        div.style.width = 200 + 'px';
+      }
+    }
+
+    ballon.addEventListener('click', (event) => {
+      let div = event.target;
+      let style = window.getComputedStyle(div);
+      let actual_color = style.getPropertyValue('background-color');
+      let height = style.getPropertyValue('height');
+
+      change_background(actual_color, div);
+      change_length(div, 10, parseInt(height, 10));
+    });
+
+    ballon.addEventListener('mouseenter', (event) => {
+      let div = event.target;
+      let style = window.getComputedStyle(div);
+      let actual_color = style.getPropertyValue('background-color');
+      let height = style.getPropertyValue('height');
+
+      change_background(actual_color, div);
+      change_length(div, 5, parseInt(height, 10));
+    });
+
+    ballon.addEventListener('mouseleave', (event) => {
+      let div = event.target;
+      let style = window.getComputedStyle(div);
+      let actual_color = style.getPropertyValue('background-color');
+      let height = style.getPropertyValue('height');
+
+      change_background(actual_color, div);
+      change_length(div, -5, parseInt(height, 10));
+    });
+  </script>
+</html>

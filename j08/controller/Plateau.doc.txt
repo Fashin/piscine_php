@@ -1,0 +1,10 @@
+class Plateau
+
+  function __construct(int width, int height, int radius_of_obstacles)
+    generate a map of width * height and set up the EAST/WEST positions
+
+  public function generate()
+    create all the obstacles width Plateau::radius_of_obstacles and a random(5,6)
+
+  public function insert_ship(Player $p)
+    insert all the instances of Ship on the side of Player and update class Player in consequences

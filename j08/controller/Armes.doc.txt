@@ -1,0 +1,8 @@
+class Armes
+
+function __construct(Array $params)
+  All the params needed for create a weapons :
+    (String)name | (int)charges | (int[2][1]) ranges | (String) description
+
+function __toString(void)
+  return a text explain the instance of Armes in running

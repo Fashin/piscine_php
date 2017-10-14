@@ -1,0 +1,11 @@
+class Game
+
+  function __construct(void)
+    create an instance of Plateau, generate a board and save the error from generation
+
+  public function init_player(Plateau $board)
+    init all the player on the board, put on the Game::players an array of instance of Players and place
+    ships on board
+
+  public function init_ship(Array $cara)
+    return and instance of Ship who is attribute to the new instance of Player in the array of Game

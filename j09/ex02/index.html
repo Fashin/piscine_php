@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    #ft_list
+    {
+      height: 30vh; width: 40vw;
+      overflow-y: scroll;
+      box-shadow: 1px 1px 10px 1px #9B9B9B;
+    }
+
+    #ft_list div { cursor: pointer; text-align: center; }
+    #ft_list div:hover { border: 1px solid #4AC1F8; }
+    .submit
+    {
+      position: absolute;
+      top: 12vh; right: 24vw;
+      background: #1E80CC;
+      border: 0px; border-bottom: 5px solid grey;
+      height: 6vh; width: 21vw;
+      cursor: pointer;
+      font-size: 18px;
+      color: white;
+      border-radius: 5px;
+      outline: none;
+    }
+    .submit:active { border-bottom: 0px; transform: translateY(1px); }
+  </style>
+  <body>
+    <div id="ft_list">
+    </div>
+    <input type="submit" class="submit" name="new" value="New">
+  </body>
+  <script src="todo.js" charset="utf-8"></script>
+</html>

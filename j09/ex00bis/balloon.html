@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+    div
+    {
+      position: absolute;
+      left: 38vw; top : 26vh;
+      background-color: red;
+      height: 200px; width: 200px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+
+    <div>
+
+    </div>
+
+  </body>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    let color = ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)'];
+
+    let new_switch = (event) => {
+      let new_color = (color.indexOf($(event.target).css('background-color')) == color.length - 1) ? color[0] : color[color.indexOf($(event.target).css('background-color')) + 1];
+      (parseInt($(event.target).css('height'), 10) + event.data.value < 420 && arseInt($(event.target).css('height'), 10) + event.data.value >= 200) ?
+        $(event.target).css({
+          'height' : '+=' + event.data.value,
+          'width' : '+=' + event.data.value,
+          'background-color' : new_color
+        }) : $(event.target).css({
+          'height' : '200',
+          'width' : '200',
+          'background-color' : new_color
+        });
+    }
+
+    $("div").on('click', {'value': 10}, new_switch);
+    $("div").on("mouseenter", {'value': 5}, new_switch);
+    $("div").on("mouseleave", {'value': -5}, new_switch);
+  </script>
+</html>

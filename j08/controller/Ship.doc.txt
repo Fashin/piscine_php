@@ -1,0 +1,11 @@
+class Ship
+
+function __construct(String $name, Array $params)
+  create an instance of Ship with in attribute a name and check up if you have
+  all params required for create this instance
+
+public function _getcara(void)
+  return all the ship caracteristic
+
+public function __toString(void)
+  return a string value of the actual instance of the Ship Class

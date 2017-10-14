@@ -1,0 +1,7 @@
+class Player
+
+  function __construct(String $name, String $race, String $color)
+    create an instance of class Player and set up and uniquid
+
+  public function attribute_position(array $players, $position)
+    Attribute a position at the actual instance of player

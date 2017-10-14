@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="m_gauche" class="m_gauche">
+    <select class="operateur" name="operateur">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+    <input type="text" name="m_droite" class="m_droite">
+    <input type="submit" class="launch" value="Try me!">
+  </body>
+  <script type="text/javascript">
+    let submit = document.getElementsByClassName('launch')[0];
+
+    submit.addEventListener('click', (event) => {
+      let m_gauche = parseInt(document.getElementsByClassName('m_gauche')[0].value, 10);
+      let m_droite = parseInt(document.getElementsByClassName('m_droite')[0].value, 10);
+      let operateur = document.getElementsByClassName('operateur')[0].value;
+
+      if (m_gauche < 0 || m_droite < 0)
+        alert("Error :(");
+      else
+      {
+        if (operateur == "+") { console.log(m_gauche + m_droite); }
+        else if (operateur == "-") { console.log(m_gauche - m_droite); }
+        else if (operateur == "*") { console.log(m_gauche * m_droite); }
+        else if (operateur == "/")
+        {
+          if (m_droite == 0)
+          {
+            console.log("It's over 90000!");
+            alert("It's over 90000!");
+          }
+          else
+            console.log(m_gauche / m_droite);
+        }
+        else if (operateur == "%")
+        {
+          if (m_droite == 0)
+          {
+            console.log("It's over 90000!");
+            alert("It's over 90000!");
+          }
+          else
+            console.log(m_gauche % m_droite);
+        }
+      }
+    });
+
+    window.setTimeout(() => {
+      alert("Please, use me...");
+    }, 30000);
+  </script>
+</html>

@@ -1,0 +1,31 @@
+Command Class
+
+Here all the command you need when you play at this magnifique game
+
+public function put_tchat(String $text, String $path, int $is_player, int $display_name)
+  Fonction for put text on the tchat and launch the command resolution
+  If is_player == 0 : Display The Game Master Name
+
+private function next(Array $cmd)
+  Function for pass the turn if you don't want do anything before, he reset the turn to
+
+private function moveTo(Array $cmd)
+  Function for moving your ship when he have speed and he is activated
+
+private function help(Array $cmd)
+  Function for see all the disponible command
+
+private function attribute(Array $cmd)
+  Function for attribute a power point on an attribute health/bouclier/vitesse/armes
+
+private function activate(Array $cmd)
+  Activate a ship if you are at a started turn
+
+private function ship_info(Array $cmd)
+  The all the information on a specified ship or all the informations on all your ship
+
+private function shoot(Array $cmd)
+  Shoot on your direct line with your activate ships
+
+public function launch_command(Array $cmd)
+  launch a command from the Command::list_cmd if you have the command execute it

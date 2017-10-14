@@ -11,6 +11,7 @@ class Ship
     'height'  =>  0,
     'width'   =>  0,
     'vitesse' =>  0,
+    'const_vitesse' => 0,
     'bouclier' => 0,
     'pos_x' => 0,
     'pos_y' => 0,
@@ -40,6 +41,7 @@ class Ship
       else
         $this->error = 1;
     }
+    $this->_cara['const_vitesse'] = $this->_cara['vitesse'];
     $this->is_activated = 0;
   }
 

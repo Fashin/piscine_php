@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" class="m_gauche">
+    <select class="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+    <input type="text" class="m_droite">
+    <input class="send" type="submit" value="Try me!">
+  </body>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(".send").on('click', () => {
+      let m_g = parseInt($('.m_gauche').val(), 10);
+      let m_d = parseInt($('.m_droite').val(), 10);
+      let op = $('.operation').val();
+      if (m_g < 0 || m_d < 0)
+        alert("Error :(");
+      else
+      {
+        if (op == '+') { console.log(m_g + m_d); }
+        else if (op == '-') { console.log(m_g - m_d); }
+        else if (op == '*') { console.log(m_g * m_d); }
+        else if (op == '/')
+        {
+          if (m_d == 0)
+          {
+            alert("It's over 90000!");
+            console.log("It's over 90000!");
+          }
+          else
+            console.log(m_g / m_d);
+        }
+        else if (op == '%')
+        {
+          if (m_d == 0)
+          {
+            alert("It's over 90000!");
+            console.log("It's over 90000!");
+          }
+          else
+            console.log(m_g % m_d);
+        }
+      }
+    });
+  </script>
+</html>
